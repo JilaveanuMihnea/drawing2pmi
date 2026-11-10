@@ -1,0 +1,765 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/JilaveanuMihnea/drawing2pmi/docs/parser-redesign/schema/drawing-model.schema.json",
+  "title": "DrawingDocument",
+  "description": "Typed 2D model of one technical drawing (PDF). DRAFT 0.1 for review: no name is frozen. Contains no 3D geometry and no B-rep identifiers. Coordinates are sheet millimetres unless a field says otherwise.",
+  "type": "object",
+  "required": ["schema_version", "document_id", "source", "sheets", "views", "primitives", "strokes", "text_runs", "tokens", "symbols", "chains", "annotations", "associations", "association_groups", "attachment_facts", "diagnostics"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "0.1.0-draft"},
+    "document_id": {"type": "string", "minLength": 1},
+    "source": {"$ref": "#/$defs/Source"},
+    "sheets": {"type": "array", "items": {"$ref": "#/$defs/Sheet"}},
+    "views": {"type": "array", "items": {"$ref": "#/$defs/DrawingView"}},
+    "primitives": {"type": "array", "items": {"$ref": "#/$defs/SourcePrimitive"}},
+    "strokes": {"type": "array", "items": {"$ref": "#/$defs/Stroke"}},
+    "text_runs": {"type": "array", "items": {"$ref": "#/$defs/TextRun"}},
+    "tokens": {"type": "array", "items": {"$ref": "#/$defs/Token"}},
+    "symbols": {"type": "array", "items": {"$ref": "#/$defs/SymbolCandidate"}},
+    "chains": {"type": "array", "items": {"$ref": "#/$defs/GeometricChain"}},
+    "annotations": {"type": "array", "items": {"$ref": "#/$defs/Annotation"}},
+    "associations": {"type": "array", "items": {"$ref": "#/$defs/AssociationCandidate"}},
+    "association_groups": {"type": "array", "items": {"$ref": "#/$defs/AssociationGroup"}},
+    "attachment_facts": {"type": "array", "items": {"$ref": "#/$defs/AttachmentFact"}},
+    "diagnostics": {"type": "array", "items": {"$ref": "#/$defs/Diagnostic"}},
+    "extensions": {
+      "description": "Optional downstream adapter output (e.g. registration hypotheses), namespaced by adapter name. Not part of the parser contract; consumers must not require it.",
+      "type": "object",
+      "additionalProperties": {"type": "object"}
+    }
+  },
+
+  "$defs": {
+    "Id": {"type": "string", "pattern": "^[a-z]+:[0-9]+$", "description": "'<kind>:<n>'. Unique in the document; deterministic for the same input file and parser version."},
+    "IdList": {"type": "array", "items": {"$ref": "#/$defs/Id"}},
+    "Point2": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+    "Polygon": {"type": "array", "items": {"$ref": "#/$defs/Point2"}, "minItems": 3},
+    "Score": {"type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Relative plausibility within its candidate set; not a probability unless calibrated (see diagnostics)."},
+
+    "Affine2": {
+      "type": "object",
+      "description": "x' = a x + c y + e ; y' = b x + d y + f (PDF matrix order).",
+      "required": ["from", "to", "matrix", "invertible"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {"type": "string"},
+        "to": {"type": "string"},
+        "matrix": {"type": "array", "items": {"type": "number"}, "minItems": 6, "maxItems": 6},
+        "invertible": {"type": "boolean"}
+      }
+    },
+
+    "Quantity": {
+      "type": "object",
+      "required": ["value", "unit", "literal"],
+      "additionalProperties": false,
+      "properties": {
+        "value": {"type": "number"},
+        "unit": {"enum": ["mm", "inch", "deg", "rad", "um", "count", "none"]},
+        "literal": {"type": "string", "description": "Exactly as printed, e.g. '5,5', '+0,012', '0°20′'."},
+        "decimal_separator": {"enum": [",", ".", null]},
+        "decimals": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+
+    "StandardRef": {
+      "type": "object",
+      "required": ["id", "edition", "cited_as"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "description": "e.g. 'ISO 2768-1'"},
+        "edition": {"type": ["string", "null"], "description": "Pinned edition, or null when the drawing does not state it."},
+        "cited_as": {"type": ["string", "null"], "description": "Literal citation on the drawing, e.g. 'm UNI EN 22768'."}
+      }
+    },
+
+    "Derivation": {
+      "type": "object",
+      "description": "How a value not printed at its place was obtained.",
+      "required": ["rule_id", "inputs"],
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {"type": "string"},
+        "standard": {"oneOf": [{"$ref": "#/$defs/StandardRef"}, {"type": "null"}]},
+        "inputs": {"$ref": "#/$defs/IdList"},
+        "note": {"type": "string"}
+      }
+    },
+
+    "Evidence": {
+      "type": "object",
+      "required": ["rule_id", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {"type": "string"},
+        "kind": {"type": "string", "description": "e.g. 'distance_mm', 'angle_deg', 'measured_vs_nominal', 'profile_match'"},
+        "value": {"type": ["number", "string", "boolean", "null"]},
+        "note": {"type": "string"}
+      }
+    },
+
+    "Source": {
+      "type": "object",
+      "required": ["file_name", "sha256", "page_count", "profile", "parser"],
+      "additionalProperties": false,
+      "properties": {
+        "file_name": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "page_count": {"type": "integer", "minimum": 1},
+        "producer": {"type": ["string", "null"]},
+        "creator": {"type": ["string", "null"]},
+        "profile": {
+          "type": "object",
+          "required": ["id", "version", "selected_by"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {"type": "string", "description": "e.g. 'solid_edge', 'generic'"},
+            "version": {"type": "string"},
+            "selected_by": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}}
+          }
+        },
+        "parser": {
+          "type": "object",
+          "required": ["name", "version"],
+          "additionalProperties": false,
+          "properties": {"name": {"type": "string"}, "version": {"type": "string"}}
+        }
+      }
+    },
+
+    "Sheet": {
+      "type": "object",
+      "required": ["id", "page_index", "size", "pdf_to_sheet"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "page_index": {"type": "integer", "minimum": 0},
+        "size": {"type": "object", "required": ["width", "height"], "additionalProperties": false,
+                 "properties": {"width": {"type": "number"}, "height": {"type": "number"}}},
+        "pdf_to_sheet": {"$ref": "#/$defs/Affine2", "description": "PDF user space (pt, y up, unrotated) to sheet mm (y down, as displayed)."},
+        "title_block": {
+          "type": ["object", "null"],
+          "required": ["region", "fields"],
+          "additionalProperties": false,
+          "properties": {
+            "region": {"$ref": "#/$defs/Polygon"},
+            "fields": {"type": "array", "items": {
+              "type": "object",
+              "required": ["label", "value", "label_source_ids", "value_source_ids"],
+              "additionalProperties": false,
+              "properties": {
+                "label": {"type": "string"},
+                "role": {"type": ["string", "null"], "description": "Profile-mapped meaning, e.g. 'scale', 'general_tolerance', 'roughness'."},
+                "value": {"type": "string"},
+                "label_source_ids": {"$ref": "#/$defs/IdList"},
+                "value_source_ids": {"$ref": "#/$defs/IdList"}
+              }
+            }}
+          }
+        },
+        "projection_method": {
+          "type": "object",
+          "required": ["value", "source_ids"],
+          "additionalProperties": false,
+          "properties": {
+            "value": {"enum": ["first_angle", "third_angle", "unknown"]},
+            "source_ids": {"$ref": "#/$defs/IdList"},
+            "evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}}
+          }
+        },
+        "scale": {"oneOf": [{"$ref": "#/$defs/ScaleSpec"}, {"type": "null"}]}
+      }
+    },
+
+    "ScaleSpec": {
+      "type": "object",
+      "required": ["literal", "value", "source_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "literal": {"type": "string", "description": "e.g. '2:1'"},
+        "value": {"type": "number", "description": "sheet mm per model mm"},
+        "source_ids": {"$ref": "#/$defs/IdList"}
+      }
+    },
+
+    "DrawingView": {
+      "type": "object",
+      "required": ["id", "sheet_id", "kind", "region", "scale"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "sheet_id": {"$ref": "#/$defs/Id"},
+        "kind": {"enum": ["orthographic", "section", "detail", "auxiliary", "axonometric", "partial", "unknown"]},
+        "kind_evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}},
+        "label": {"type": ["object", "null"], "required": ["literal", "source_ids"], "additionalProperties": false,
+                  "properties": {"literal": {"type": "string"}, "source_ids": {"$ref": "#/$defs/IdList"}}},
+        "region": {"$ref": "#/$defs/Polygon"},
+        "clip_boundary_ids": {"$ref": "#/$defs/IdList", "description": "Strokes bounding a detail circle or break, if any."},
+        "scale": {
+          "type": "object",
+          "required": ["source"],
+          "additionalProperties": false,
+          "properties": {
+            "printed": {"oneOf": [{"$ref": "#/$defs/ScaleSpec"}, {"type": "null"}]},
+            "fitted": {"type": ["object", "null"], "required": ["value", "rms_mm", "n"], "additionalProperties": false,
+                       "properties": {"value": {"type": "number"}, "rms_mm": {"type": "number"}, "n": {"type": "integer"}}},
+            "source": {"enum": ["printed", "sheet", "fitted", "unknown"]}
+          }
+        },
+        "frame": {
+          "type": ["object", "null"],
+          "description": "View coordinates (model-size mm, x right, y up) to sheet mm. Its origin comes from ordinate origins when present.",
+          "required": ["view_to_sheet", "origin_source"],
+          "additionalProperties": false,
+          "properties": {
+            "view_to_sheet": {"$ref": "#/$defs/Affine2"},
+            "origin_source": {"enum": ["ordinate_origin", "aligned_view", "none"]},
+            "origin_ids": {"$ref": "#/$defs/IdList"}
+          }
+        },
+        "relations": {"type": "array", "items": {
+          "type": "object",
+          "required": ["kind", "view_id", "status"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": {"enum": ["section_of", "detail_of", "projected_from", "aligned_with"]},
+            "view_id": {"$ref": "#/$defs/Id"},
+            "evidence_ids": {"$ref": "#/$defs/IdList", "description": "e.g. cutting-plane chain, detail circle, caption"},
+            "viewing_direction": {"oneOf": [{"$ref": "#/$defs/Point2"}, {"type": "null"}], "description": "Sheet direction of the cutting-plane arrows."},
+            "status": {"enum": ["resolved", "ambiguous", "unresolved"]}
+          }
+        }}
+      }
+    },
+
+    "SourcePrimitive": {
+      "description": "Raw PDF content, never modified after ingestion.",
+      "type": "object",
+      "required": ["id", "type", "sheet_id"],
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "type": {"enum": ["path", "image"]},
+        "sheet_id": {"$ref": "#/$defs/Id"}
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "type": {"const": "path"},
+            "pdf_path_index": {"type": "integer"},
+            "segments": {"type": "array", "items": {
+              "type": "object",
+              "required": ["kind", "points"],
+              "additionalProperties": false,
+              "properties": {"kind": {"enum": ["line", "bezier"]}, "points": {"type": "array", "items": {"$ref": "#/$defs/Point2"}, "minItems": 2, "maxItems": 4}}
+            }},
+            "stroke": {"type": ["object", "null"], "additionalProperties": false,
+                       "properties": {"width_pt": {"type": "number"}, "color": {"type": ["array", "null"]}, "dash": {"type": ["string", "null"]}}},
+            "fill": {"type": ["object", "null"], "additionalProperties": false, "properties": {"color": {"type": ["array", "null"]}}},
+            "closed": {"type": "boolean"},
+            "clip_ids": {"$ref": "#/$defs/IdList"}
+          },
+          "required": ["pdf_path_index", "segments", "closed"]
+        },
+        {
+          "properties": {"type": {"const": "image"}, "bbox": {"$ref": "#/$defs/Polygon"}},
+          "required": ["bbox"]
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+
+    "Stroke": {
+      "description": "Reconstructed drawing line: chained segments, fitted primitives, and type/role candidates.",
+      "type": "object",
+      "required": ["id", "sheet_id", "source_ids", "primitives", "line_type_candidates", "role_candidates"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "sheet_id": {"$ref": "#/$defs/Id"},
+        "source_ids": {"$ref": "#/$defs/IdList"},
+        "closed": {"type": "boolean"},
+        "primitives": {"type": "array", "items": {
+          "type": "object",
+          "required": ["kind", "fit_residual_mm"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": {"enum": ["line", "arc"]},
+            "p0": {"$ref": "#/$defs/Point2"},
+            "p1": {"$ref": "#/$defs/Point2"},
+            "center": {"$ref": "#/$defs/Point2"},
+            "radius": {"type": "number"},
+            "start_deg": {"type": "number"},
+            "sweep_deg": {"type": "number"},
+            "fit_residual_mm": {"type": "number"}
+          }
+        }},
+        "line_type_candidates": {"type": "array", "items": {
+          "type": "object", "required": ["value", "score"], "additionalProperties": false,
+          "properties": {
+            "value": {"enum": ["continuous", "dashed", "chain", "double_chain", "unknown"]},
+            "score": {"$ref": "#/$defs/Score"},
+            "evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}}
+          }
+        }},
+        "role_candidates": {"type": "array", "items": {
+          "type": "object", "required": ["value", "score"], "additionalProperties": false,
+          "properties": {
+            "value": {"enum": ["visible_outline", "hidden_outline", "center_line", "phantom", "dimension_line", "extension_line", "leader", "reference_line", "construction_line", "hatching", "cutting_plane", "break_line", "frame_border", "symbol_part", "unknown"]},
+            "score": {"$ref": "#/$defs/Score"},
+            "evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}}
+          }
+        }}
+      }
+    },
+
+    "TextRun": {
+      "type": "object",
+      "required": ["id", "sheet_id", "text", "font", "origin", "direction", "bbox", "glyphs"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "sheet_id": {"$ref": "#/$defs/Id"},
+        "text": {"type": "string", "description": "As extracted (raw code points)."},
+        "font": {"type": "object", "required": ["name", "size_mm"], "additionalProperties": false,
+                 "properties": {"name": {"type": "string"}, "size_mm": {"type": "number"}, "embedded": {"type": ["boolean", "null"]}, "has_unicode_map": {"type": ["boolean", "null"]}}},
+        "origin": {"$ref": "#/$defs/Point2"},
+        "direction": {"$ref": "#/$defs/Point2"},
+        "bbox": {"$ref": "#/$defs/Polygon"},
+        "glyphs": {"type": "array", "items": {
+          "type": "object",
+          "required": ["raw", "decoded", "decode_rule"],
+          "additionalProperties": false,
+          "properties": {
+            "raw": {"type": "string", "description": "Code point as in the PDF."},
+            "decoded": {"type": ["string", "null"], "description": "Meaning after the profile font map; null if unknown."},
+            "decode_rule": {"type": "string", "description": "e.g. 'unicode', 'profile:solid_edge:SolidEdgeISO1Symbols'"},
+            "bbox": {"$ref": "#/$defs/Polygon"}
+          }
+        }}
+      }
+    },
+
+    "Token": {
+      "type": "object",
+      "required": ["id", "kind", "literal", "decoded", "text_run_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "kind": {"enum": ["number", "letter", "word", "symbol", "modifier", "operator", "punctuation", "unknown"]},
+        "literal": {"type": "string"},
+        "decoded": {"type": ["string", "null"]},
+        "text_run_ids": {"$ref": "#/$defs/IdList"},
+        "glyph_indices": {"type": "array", "items": {"type": "integer"}},
+        "stacked": {"enum": ["upper", "lower", null], "description": "Position in a stacked pair (deviations)."}
+      }
+    },
+
+    "SymbolCandidate": {
+      "type": "object",
+      "required": ["id", "type", "source_ids", "score"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "type": {"enum": ["arrowhead_filled", "arrowhead_open", "oblique_stroke", "dot", "datum_triangle_filled", "datum_triangle_open", "frame_box", "texture_symbol", "origin_mark", "unknown"]},
+        "source_ids": {"$ref": "#/$defs/IdList"},
+        "tip": {"$ref": "#/$defs/Point2"},
+        "direction": {"$ref": "#/$defs/Point2"},
+        "polygon": {"$ref": "#/$defs/Polygon"},
+        "score": {"$ref": "#/$defs/Score"},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}}
+      }
+    },
+
+    "GeometricChain": {
+      "description": "Connected drawing lines between junctions (leader, dimension line, extension line, shelf...). Topology, not meaning: roles are candidates.",
+      "type": "object",
+      "required": ["id", "sheet_id", "nodes", "edges", "terminals", "role_candidates", "routes"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "sheet_id": {"$ref": "#/$defs/Id"},
+        "nodes": {"type": "array", "items": {
+          "type": "object", "required": ["id", "point", "kind"], "additionalProperties": false,
+          "properties": {
+            "id": {"$ref": "#/$defs/Id"},
+            "point": {"$ref": "#/$defs/Point2"},
+            "kind": {"enum": ["end", "bend", "junction", "contact"]}
+          }
+        }},
+        "edges": {"type": "array", "items": {
+          "type": "object", "required": ["id", "from", "to", "stroke_ids", "shape"], "additionalProperties": false,
+          "properties": {
+            "id": {"$ref": "#/$defs/Id"},
+            "from": {"$ref": "#/$defs/Id"},
+            "to": {"$ref": "#/$defs/Id"},
+            "stroke_ids": {"$ref": "#/$defs/IdList"},
+            "shape": {"enum": ["line", "arc"]}
+          }
+        }},
+        "terminals": {"type": "array", "items": {
+          "type": "object", "required": ["id", "node_id", "kind"], "additionalProperties": false,
+          "properties": {
+            "id": {"$ref": "#/$defs/Id"},
+            "node_id": {"$ref": "#/$defs/Id"},
+            "kind": {"enum": ["arrow_filled", "arrow_open", "oblique_stroke", "dot", "datum_triangle_filled", "datum_triangle_open", "none", "unknown"]},
+            "symbol_id": {"oneOf": [{"$ref": "#/$defs/Id"}, {"type": "null"}]},
+            "direction": {"oneOf": [{"$ref": "#/$defs/Point2"}, {"type": "null"}], "description": "Unit vector the terminal points along (sheet)."}
+          }
+        }},
+        "role_candidates": {"type": "array", "items": {
+          "type": "object", "required": ["value", "score"], "additionalProperties": false,
+          "properties": {
+            "value": {"enum": ["leader", "dimension_line", "extension_line", "reference_line", "center_line", "construction_line", "cutting_plane", "unknown"]},
+            "score": {"$ref": "#/$defs/Score"},
+            "evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}}
+          }
+        }},
+        "routes": {"type": "array", "description": "Candidate paths through the chain, ordered from the annotation side to the target side. More than one when a junction is ambiguous; one per branch.", "items": {
+          "type": "object", "required": ["id", "node_ids", "status"], "additionalProperties": false,
+          "properties": {
+            "id": {"$ref": "#/$defs/Id"},
+            "node_ids": {"$ref": "#/$defs/IdList"},
+            "score": {"$ref": "#/$defs/Score"},
+            "status": {"enum": ["resolved", "ambiguous", "rejected"]},
+            "reason": {"type": "string"}
+          }
+        }}
+      }
+    },
+
+    "AttachmentFact": {
+      "description": "A 2D fact about where a line or terminal ends, which Otto's binder needs to choose integral vs derived targets. Observed geometry only, no 3D interpretation.",
+      "type": "object",
+      "required": ["id", "kind", "subject_id", "object_ids", "point", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "kind": {"enum": [
+          "terminal_on_outline", "terminal_on_extension_line", "terminal_on_dimension_line",
+          "terminal_in_line_with_dimension_line", "terminal_on_center_line", "terminal_dot_inside_region",
+          "terminal_on_construction_intersection", "extension_origin_on_outline",
+          "extension_origin_at_construction_intersection", "symbol_on_reference_line"]},
+        "subject_id": {"$ref": "#/$defs/Id", "description": "Terminal, chain node or symbol."},
+        "object_ids": {"$ref": "#/$defs/IdList", "description": "Strokes, chains or annotations it relates to."},
+        "point": {"$ref": "#/$defs/Point2"},
+        "distance_mm": {"type": ["number", "null"]},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}},
+        "status": {"enum": ["observed", "candidate", "rejected"]}
+      }
+    },
+
+    "ToleranceSpec": {
+      "type": "object",
+      "required": ["printed", "derived", "effective"],
+      "additionalProperties": false,
+      "properties": {
+        "printed": {
+          "type": "object",
+          "required": ["form"],
+          "additionalProperties": false,
+          "properties": {
+            "form": {"enum": ["none", "symmetric", "deviations", "limits", "single_limit", "fit", "fit_with_deviations"]},
+            "upper": {"oneOf": [{"$ref": "#/$defs/Quantity"}, {"type": "null"}]},
+            "lower": {"oneOf": [{"$ref": "#/$defs/Quantity"}, {"type": "null"}]},
+            "fit": {"type": ["object", "null"], "required": ["literal", "fundamental_deviation", "grade", "hole_or_shaft"], "additionalProperties": false,
+                    "properties": {
+                      "literal": {"type": "string"},
+                      "fundamental_deviation": {"type": "string"},
+                      "grade": {"type": "integer"},
+                      "hole_or_shaft": {"enum": ["hole", "shaft"], "description": "From the letter case (ISO 286 syntax rule)."}
+                    }},
+            "token_ids": {"$ref": "#/$defs/IdList"}
+          }
+        },
+        "derived": {"type": "array", "items": {
+          "type": "object", "required": ["upper", "lower", "derivation"], "additionalProperties": false,
+          "properties": {
+            "upper": {"$ref": "#/$defs/Quantity"},
+            "lower": {"$ref": "#/$defs/Quantity"},
+            "derivation": {"$ref": "#/$defs/Derivation"}
+          }
+        }},
+        "effective": {"enum": ["printed", "derived", "none", "not_applicable"], "description": "Which one governs. 'not_applicable' for basic and auxiliary dimensions."}
+      }
+    },
+
+    "AnnotationBase": {
+      "type": "object",
+      "required": ["id", "type", "sheet_id", "view_candidates", "printed", "syntax", "region"],
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "type": {"type": "string"},
+        "sheet_id": {"$ref": "#/$defs/Id"},
+        "view_candidates": {"type": "array", "items": {
+          "type": "object", "required": ["view_id", "score"], "additionalProperties": false,
+          "properties": {"view_id": {"$ref": "#/$defs/Id"}, "score": {"$ref": "#/$defs/Score"}, "evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}}}
+        }},
+        "printed": {
+          "type": "object",
+          "required": ["literal", "token_ids", "text_run_ids", "symbol_ids"],
+          "additionalProperties": false,
+          "properties": {
+            "literal": {"type": "string", "description": "Decoded text as printed, tokens joined by spaces."},
+            "token_ids": {"$ref": "#/$defs/IdList"},
+            "text_run_ids": {"$ref": "#/$defs/IdList"},
+            "symbol_ids": {"$ref": "#/$defs/IdList"}
+          }
+        },
+        "syntax": {
+          "type": "object",
+          "required": ["status", "grammar"],
+          "additionalProperties": false,
+          "properties": {
+            "status": {"enum": ["valid", "partial", "invalid", "unparsed"]},
+            "grammar": {"type": ["string", "null"], "description": "Grammar rule id, e.g. 'iso129-1:diameter'."},
+            "errors": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "region": {"$ref": "#/$defs/Polygon"},
+        "diagnostic_ids": {"$ref": "#/$defs/IdList"}
+      }
+    },
+
+    "DimensionCommon": {
+      "properties": {
+        "nominal": {"$ref": "#/$defs/Quantity"},
+        "tolerance": {"$ref": "#/$defs/ToleranceSpec"},
+        "status": {"enum": ["toleranced", "basic", "auxiliary", "not_to_scale"], "description": "basic = theoretically exact (framed); auxiliary = in parentheses."},
+        "count": {"type": ["integer", "null"], "minimum": 1},
+        "modifiers": {"type": "array", "items": {
+          "type": "object", "required": ["literal", "token_ids"], "additionalProperties": false,
+          "properties": {"literal": {"type": "string"}, "token_ids": {"$ref": "#/$defs/IdList"}, "known": {"type": "boolean"}}
+        }}
+      },
+      "required": ["nominal", "tolerance", "status"]
+    },
+
+    "Annotation": {
+      "allOf": [{"$ref": "#/$defs/AnnotationBase"}],
+      "oneOf": [
+        {"allOf": [{"$ref": "#/$defs/DimensionCommon"}], "properties": {
+          "type": {"const": "SizeDimension"},
+          "size_symbol": {"enum": ["diameter", "spherical_diameter", "square", "none"]},
+          "size_basis": {"type": "array", "items": {"type": "string"}, "description": "Syntax rules that make this a size: symbol, fit code, size modifier."}
+        }, "required": ["size_symbol", "size_basis"]},
+        {"allOf": [{"$ref": "#/$defs/DimensionCommon"}], "properties": {
+          "type": {"const": "LinearDimension"},
+          "size_or_distance": {"enum": ["undetermined"], "description": "A plain linear value: whether it is a size (ISO 14405-1) or a distance (ISO 14405-2) depends on 3D geometry and is left to Otto."},
+          "measuring_direction": {"$ref": "#/$defs/Point2"}
+        }, "required": ["size_or_distance"]},
+        {"allOf": [{"$ref": "#/$defs/DimensionCommon"}], "properties": {
+          "type": {"const": "DistanceDimension"},
+          "distance_basis": {"type": "array", "items": {"type": "string"}, "description": "Syntax rules that make this a distance, e.g. angular ordinate, ordinate."},
+          "measuring_direction": {"$ref": "#/$defs/Point2"}
+        }, "required": ["distance_basis"]},
+        {"allOf": [{"$ref": "#/$defs/DimensionCommon"}], "properties": {
+          "type": {"const": "RadiusDimension"},
+          "prefix": {"enum": ["R", "SR", "CR"]}
+        }, "required": ["prefix"]},
+        {"allOf": [{"$ref": "#/$defs/DimensionCommon"}], "properties": {
+          "type": {"const": "AngularDimension"},
+          "vertex": {"oneOf": [{"$ref": "#/$defs/Point2"}, {"type": "null"}]},
+          "legs_coincide": {"type": "boolean"}
+        }},
+        {"allOf": [{"$ref": "#/$defs/DimensionCommon"}], "properties": {
+          "type": {"const": "OrdinateDimension"},
+          "coordinate": {"enum": ["x", "y", "polar_angle"]},
+          "origin_id": {"oneOf": [{"$ref": "#/$defs/Id"}, {"type": "null"}]},
+          "polar_convention": {"type": ["object", "null"], "required": ["zero_direction", "clockwise", "derivation"], "additionalProperties": false,
+            "properties": {"zero_direction": {"$ref": "#/$defs/Point2"}, "clockwise": {"type": "boolean"}, "derivation": {"$ref": "#/$defs/Derivation"}}}
+        }, "required": ["coordinate", "origin_id"]},
+        {"properties": {
+          "type": {"const": "OrdinateOrigin"},
+          "point": {"$ref": "#/$defs/Point2"},
+          "axes": {"type": "array", "items": {"enum": ["x", "y", "polar_angle"]}}
+        }, "required": ["point", "axes"]},
+        {"properties": {
+          "type": {"const": "GeometricalTolerance"},
+          "frame": {"$ref": "#/$defs/FeatureControlFrame"},
+          "adjacent_indications": {"type": "array", "items": {
+            "type": "object", "required": ["kind", "literal", "token_ids"], "additionalProperties": false,
+            "properties": {"kind": {"enum": ["count", "common_zone", "separate_zones", "simultaneous", "all_around", "all_over", "between", "note", "unknown"]}, "literal": {"type": "string"}, "token_ids": {"$ref": "#/$defs/IdList"}}
+          }}
+        }, "required": ["frame"]},
+        {"properties": {
+          "type": {"const": "DatumFeatureIndication"},
+          "letter": {"type": "string", "pattern": "^[A-Z]{1,2}$"},
+          "triangle": {"enum": ["filled", "open", "unknown"]}
+        }, "required": ["letter", "triangle"]},
+        {"properties": {
+          "type": {"const": "DatumTargetIndication"},
+          "identifier": {"type": "string"},
+          "target_kind": {"enum": ["point", "line", "area", "unknown"]},
+          "size": {"oneOf": [{"$ref": "#/$defs/Quantity"}, {"type": "null"}]}
+        }, "required": ["identifier", "target_kind"]},
+        {"properties": {
+          "type": {"const": "SurfaceTextureSpecification"},
+          "symbol_variant": {"enum": ["basic", "removal_required", "removal_prohibited", "unknown"]},
+          "all_around": {"type": "boolean"},
+          "requirements": {"type": "array", "items": {"$ref": "#/$defs/TextureRequirement"}},
+          "lay": {"type": ["string", "null"]},
+          "process": {"type": ["string", "null"]},
+          "indication_style": {"enum": ["iso21920", "iso1302_2002", "legacy", "unknown"]}
+        }, "required": ["symbol_variant", "requirements"]},
+        {"properties": {
+          "type": {"const": "EdgeSpecification"},
+          "values": {"type": "array", "items": {"$ref": "#/$defs/Quantity"}}
+        }, "required": ["values"]},
+        {"properties": {
+          "type": {"const": "GeneralSpecification"},
+          "scope": {"enum": ["sheet", "view", "document"]},
+          "kind": {"enum": ["general_tolerance", "general_geometrical", "general_texture", "invocation", "other"]},
+          "standard": {"$ref": "#/$defs/StandardRef"},
+          "class": {"type": ["string", "null"]},
+          "table": {"type": "array", "items": {
+            "type": "object", "required": ["over", "up_to", "deviation", "printed"], "additionalProperties": false,
+            "properties": {"over": {"type": "number"}, "up_to": {"type": "number"}, "deviation": {"type": "number"}, "printed": {"type": "boolean"}}
+          }},
+          "requirements": {"type": "array", "items": {"$ref": "#/$defs/TextureRequirement"}},
+          "exceptions": {"type": "array", "items": {"$ref": "#/$defs/Quantity"}}
+        }, "required": ["scope", "kind", "standard"]},
+        {"properties": {
+          "type": {"const": "ThreadNote"},
+          "designation": {"type": ["string", "null"]}
+        }},
+        {"properties": {"type": {"const": "FreeTextNote"}}},
+        {"properties": {"type": {"const": "UnknownAnnotation"}, "reason": {"type": "string"}}, "required": ["reason"]}
+      ],
+      "unevaluatedProperties": false
+    },
+
+    "TextureRequirement": {
+      "type": "object",
+      "required": ["parameter", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "parameter": {
+          "type": "object",
+          "required": ["printed"],
+          "additionalProperties": false,
+          "properties": {
+            "printed": {"type": ["string", "null"], "description": "e.g. 'Ra'; null when the drawing prints only a value."},
+            "derived": {"type": ["object", "null"], "required": ["value", "derivation"], "additionalProperties": false,
+                        "properties": {"value": {"type": "string"}, "derivation": {"$ref": "#/$defs/Derivation"}}}
+          }
+        },
+        "value": {"$ref": "#/$defs/Quantity"},
+        "limit": {"enum": ["upper", "lower", null]},
+        "filter": {"type": ["string", "null"]},
+        "evaluation_length": {"type": ["string", "null"]},
+        "token_ids": {"$ref": "#/$defs/IdList"}
+      }
+    },
+
+    "FeatureControlFrame": {
+      "type": "object",
+      "required": ["rows", "composite", "box_symbol_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "rows": {"type": "array", "minItems": 1, "items": {
+          "type": "object",
+          "required": ["index", "characteristic", "compartments", "zone", "datum_references"],
+          "additionalProperties": false,
+          "properties": {
+            "index": {"type": "integer", "minimum": 0},
+            "characteristic": {"type": "object", "required": ["value", "literal", "token_ids"], "additionalProperties": false,
+              "properties": {
+                "value": {"enum": ["straightness", "flatness", "roundness", "cylindricity", "line_profile", "surface_profile", "parallelism", "perpendicularity", "angularity", "position", "concentricity", "coaxiality", "symmetry", "circular_runout", "total_runout", "unknown"]},
+                "literal": {"type": "string"},
+                "token_ids": {"$ref": "#/$defs/IdList"}
+              }},
+            "compartments": {"type": "array", "items": {
+              "type": "object", "required": ["index", "kind", "token_ids"], "additionalProperties": false,
+              "properties": {
+                "index": {"type": "integer", "minimum": 0},
+                "kind": {"enum": ["characteristic", "tolerance", "datum", "unknown"]},
+                "token_ids": {"$ref": "#/$defs/IdList"},
+                "box": {"$ref": "#/$defs/Polygon"}
+              }
+            }},
+            "zone": {"type": "object", "required": ["shape", "value", "modifiers"], "additionalProperties": false,
+              "properties": {
+                "shape": {"enum": ["none", "diameter", "spherical_diameter"]},
+                "value": {"$ref": "#/$defs/Quantity"},
+                "modifiers": {"type": "array", "items": {
+                  "type": "object", "required": ["literal", "position", "token_ids"], "additionalProperties": false,
+                  "properties": {"literal": {"type": "string"}, "position": {"enum": ["before_value", "after_value"]}, "token_ids": {"$ref": "#/$defs/IdList"}, "known": {"type": "boolean"}}
+                }}
+              }},
+            "datum_references": {"type": "array", "items": {
+              "type": "object", "required": ["order", "compartment_index", "elements", "relation"], "additionalProperties": false,
+              "properties": {
+                "order": {"type": "integer", "minimum": 1, "description": "1 = primary, 2 = secondary, 3 = tertiary."},
+                "compartment_index": {"type": "integer"},
+                "relation": {"enum": ["single", "common"], "description": "common: 'A-B'."},
+                "elements": {"type": "array", "minItems": 1, "items": {
+                  "type": "object", "required": ["letter", "modifiers"], "additionalProperties": false,
+                  "properties": {"letter": {"type": "string"}, "modifiers": {"type": "array", "items": {"type": "string"}}}
+                }}
+              }
+            }}
+          }
+        }},
+        "composite": {"type": "boolean"},
+        "box_symbol_ids": {"$ref": "#/$defs/IdList"}
+      }
+    },
+
+    "AssociationCandidate": {
+      "description": "One possible 2D relation between an annotation and drawing geometry. Never a 3D binding.",
+      "type": "object",
+      "required": ["id", "annotation_id", "relation", "chain_ids", "terminal_ids", "rule_ids", "evidence", "score", "status", "reason", "ambiguity_origin"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "annotation_id": {"$ref": "#/$defs/Id"},
+        "relation": {"enum": [
+          "dimension_line", "extension_line", "leader", "ordinate_extension_line", "angle_legs",
+          "frame_to_dimension", "frame_leader", "datum_to_frame", "datum_leader", "texture_symbol_leader",
+          "label_to_symbol", "adjacent_indication", "unknown"]},
+        "target_annotation_id": {"oneOf": [{"$ref": "#/$defs/Id"}, {"type": "null"}], "description": "For frame_to_dimension, datum_to_frame, adjacent_indication."},
+        "chain_ids": {"$ref": "#/$defs/IdList"},
+        "route_ids": {"$ref": "#/$defs/IdList"},
+        "terminal_ids": {"$ref": "#/$defs/IdList"},
+        "attachment_fact_ids": {"$ref": "#/$defs/IdList"},
+        "rule_ids": {"type": "array", "items": {"type": "string"}},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/Evidence"}},
+        "score": {"$ref": "#/$defs/Score"},
+        "status": {"enum": ["resolved", "ambiguous", "rejected", "unsupported", "invalid", "unresolved"]},
+        "reason": {"type": "string"},
+        "ambiguity_origin": {"enum": ["none", "drawing_permits", "pdf_unreadable", "parser_limit"]}
+      }
+    },
+
+    "AssociationGroup": {
+      "description": "A constraint over candidates, e.g. 'this radius label has exactly one leader'. Records how it was resolved and the margin.",
+      "type": "object",
+      "required": ["id", "rule", "candidate_ids", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "rule": {"enum": ["exactly_one", "at_most_one", "at_least_one", "any"]},
+        "candidate_ids": {"$ref": "#/$defs/IdList"},
+        "selected_ids": {"$ref": "#/$defs/IdList"},
+        "status": {"enum": ["resolved", "ambiguous", "unresolved", "infeasible"]},
+        "margin": {"type": ["number", "null"], "description": "Score gap between the selected and the best alternative."},
+        "reason": {"type": "string"}
+      }
+    },
+
+    "Diagnostic": {
+      "type": "object",
+      "required": ["id", "severity", "code", "message", "source_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/Id"},
+        "severity": {"enum": ["info", "warning", "error"]},
+        "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]+$"},
+        "message": {"type": "string"},
+        "source_ids": {"$ref": "#/$defs/IdList"},
+        "rule_id": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

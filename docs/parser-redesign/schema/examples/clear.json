@@ -1,0 +1,2797 @@
+{
+ "schema_version": "0.1.0-draft",
+ "document_id": "T00302932-00/example-clear",
+ "source": {
+  "file_name": "T00302932-00.pdf",
+  "sha256": "9d851ac9e1db24a5f0faf6b77fe9a093896c9fb9457de7ba20838d972e34095d",
+  "page_count": 1,
+  "producer": "Solid Edge (from metadata; to confirm)",
+  "creator": null,
+  "profile": {
+   "id": "solid_edge",
+   "version": "0.1",
+   "selected_by": [
+    {
+     "rule_id": "profile.producer_match",
+     "kind": "profile_match",
+     "value": "Solid Edge (from metadata; to confirm)"
+    }
+   ]
+  },
+  "parser": {
+   "name": "drawing2pmi",
+   "version": "0.1.0-draft"
+  }
+ },
+ "sheets": [
+  {
+   "id": "sheet:1",
+   "page_index": 0,
+   "size": {
+    "width": 1188.86,
+    "height": 841.02
+   },
+   "pdf_to_sheet": {
+    "from": "pdf_user_space_pt",
+    "to": "sheet:1",
+    "matrix": [
+     0.0,
+     0.352778,
+     0.352778,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "invertible": true
+   },
+   "title_block": null,
+   "projection_method": {
+    "value": "first_angle",
+    "source_ids": [],
+    "evidence": [
+     {
+      "rule_id": "views.projection_symbol",
+      "kind": "circles_side",
+      "value": "right_of_trapezoid"
+     }
+    ]
+   },
+   "scale": {
+    "literal": "2:1",
+    "value": 2.0,
+    "source_ids": []
+   }
+  }
+ ],
+ "views": [
+  {
+   "id": "view:11",
+   "sheet_id": "sheet:1",
+   "kind": "section",
+   "kind_evidence": [
+    {
+     "rule_id": "views.caption",
+     "kind": "caption",
+     "value": "D-D"
+    },
+    {
+     "rule_id": "views.hatching",
+     "kind": "hatch_families",
+     "value": 1
+    }
+   ],
+   "label": {
+    "literal": "D-D",
+    "source_ids": []
+   },
+   "region": [
+    [
+     505.46,
+     62.569
+    ],
+    [
+     600.583,
+     62.569
+    ],
+    [
+     600.583,
+     81.576
+    ],
+    [
+     505.46,
+     81.576
+    ]
+   ],
+   "scale": {
+    "printed": null,
+    "fitted": null,
+    "source": "sheet"
+   },
+   "frame": null,
+   "relations": [
+    {
+     "kind": "section_of",
+     "view_id": "view:0",
+     "evidence_ids": [],
+     "viewing_direction": null,
+     "status": "resolved"
+    }
+   ]
+  },
+  {
+   "id": "view:9",
+   "sheet_id": "sheet:1",
+   "kind": "orthographic",
+   "label": null,
+   "region": [
+    [
+     123.105,
+     551.053
+    ],
+    [
+     142.113,
+     551.053
+    ],
+    [
+     142.113,
+     739.775
+    ],
+    [
+     123.105,
+     739.775
+    ]
+   ],
+   "scale": {
+    "printed": null,
+    "fitted": null,
+    "source": "sheet"
+   },
+   "frame": null,
+   "relations": []
+  },
+  {
+   "id": "view:0",
+   "sheet_id": "sheet:1",
+   "kind": "orthographic",
+   "label": null,
+   "region": [
+    [
+     231.422,
+     551.039
+    ],
+    [
+     461.433,
+     551.039
+    ],
+    [
+     461.433,
+     739.775
+    ],
+    [
+     231.422,
+     739.775
+    ]
+   ],
+   "scale": {
+    "printed": null,
+    "fitted": {
+     "value": 2.0,
+     "rms_mm": 0.0047,
+     "n": 29
+    },
+    "source": "fitted"
+   },
+   "frame": {
+    "view_to_sheet": {
+     "from": "view:0",
+     "to": "sheet:1",
+     "matrix": [
+      2.0,
+      0,
+      0,
+      -2.0,
+      346.523,
+      666.041
+     ],
+     "invertible": true
+    },
+    "origin_source": "ordinate_origin",
+    "origin_ids": []
+   },
+   "relations": []
+  }
+ ],
+ "primitives": [
+  {
+   "id": "prim:1",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 901,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       544.703,
+       43.603
+      ],
+      [
+       560.917,
+       43.603
+      ]
+     ]
+    }
+   ],
+   "stroke": {
+    "width_pt": 0.24,
+    "color": [
+     0,
+     0,
+     0
+    ],
+    "dash": null
+   },
+   "fill": null,
+   "closed": false
+  },
+  {
+   "id": "prim:2",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 902,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       555.711,
+       73.576
+      ],
+      [
+       555.711,
+       29.633
+      ]
+     ]
+    }
+   ],
+   "stroke": {
+    "width_pt": 0.24,
+    "color": [
+     0,
+     0,
+     0
+    ],
+    "dash": null
+   },
+   "fill": null,
+   "closed": false
+  },
+  {
+   "id": "prim:3",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 903,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       544.703,
+       73.576
+      ],
+      [
+       544.703,
+       41.628
+      ]
+     ]
+    }
+   ],
+   "stroke": {
+    "width_pt": 0.24,
+    "color": [
+     0,
+     0,
+     0
+    ],
+    "dash": null
+   },
+   "fill": null,
+   "closed": false
+  },
+  {
+   "id": "prim:4",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 904,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       555.711,
+       43.603
+      ],
+      [
+       553.614,
+       42.898
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       553.614,
+       42.898
+      ],
+      [
+       553.614,
+       44.309
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       553.614,
+       44.309
+      ],
+      [
+       555.711,
+       43.603
+      ]
+     ]
+    }
+   ],
+   "stroke": null,
+   "fill": {
+    "color": [
+     0,
+     0,
+     0
+    ]
+   },
+   "closed": true
+  },
+  {
+   "id": "prim:5",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 905,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       544.703,
+       43.603
+      ],
+      [
+       546.806,
+       42.898
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       546.806,
+       42.898
+      ],
+      [
+       546.806,
+       44.309
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       546.806,
+       44.309
+      ],
+      [
+       544.703,
+       43.603
+      ]
+     ]
+    }
+   ],
+   "stroke": null,
+   "fill": {
+    "color": [
+     0,
+     0,
+     0
+    ]
+   },
+   "closed": true
+  },
+  {
+   "id": "prim:6",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 906,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       561.199,
+       32.893
+      ],
+      [
+       555.711,
+       32.893
+      ]
+     ]
+    }
+   ],
+   "stroke": {
+    "width_pt": 0.24,
+    "color": [
+     0,
+     0,
+     0
+    ],
+    "dash": null
+   },
+   "fill": null,
+   "closed": false
+  },
+  {
+   "id": "prim:7",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 907,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       555.711,
+       32.893
+      ],
+      [
+       557.812,
+       32.187
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       557.812,
+       32.187
+      ],
+      [
+       557.812,
+       33.599
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       557.812,
+       33.599
+      ],
+      [
+       555.711,
+       32.893
+      ]
+     ]
+    }
+   ],
+   "stroke": null,
+   "fill": {
+    "color": [
+     0,
+     0,
+     0
+    ]
+   },
+   "closed": true
+  },
+  {
+   "id": "prim:8",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 908,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       555.711,
+       32.851
+      ],
+      [
+       550.686,
+       35.736
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       550.686,
+       35.736
+      ],
+      [
+       550.686,
+       29.951
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       550.686,
+       29.951
+      ],
+      [
+       545.924,
+       27.199
+      ]
+     ]
+    }
+   ],
+   "stroke": {
+    "width_pt": 0.24,
+    "color": [
+     0,
+     0,
+     0
+    ],
+    "dash": null
+   },
+   "fill": null,
+   "closed": false
+  },
+  {
+   "id": "prim:9",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 909,
+   "segments": [
+    {
+     "kind": "line",
+     "points": [
+      [
+       142.113,
+       787.576
+      ],
+      [
+       145.344,
+       789.686
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       145.344,
+       789.686
+      ],
+      [
+       142.113,
+       791.81
+      ]
+     ]
+    },
+    {
+     "kind": "line",
+     "points": [
+      [
+       142.113,
+       791.81
+      ],
+      [
+       142.113,
+       787.576
+      ]
+     ]
+    }
+   ],
+   "stroke": null,
+   "fill": {
+    "color": [
+     0,
+     0,
+     0
+    ]
+   },
+   "closed": true
+  }
+ ],
+ "strokes": [
+  {
+   "id": "stroke:1",
+   "sheet_id": "sheet:1",
+   "source_ids": [
+    "prim:1"
+   ],
+   "closed": false,
+   "primitives": [
+    {
+     "kind": "line",
+     "p0": [
+      544.703,
+      43.603
+     ],
+     "p1": [
+      560.917,
+      43.603
+     ],
+     "fit_residual_mm": 0.0
+    }
+   ],
+   "line_type_candidates": [
+    {
+     "value": "continuous",
+     "score": 1.0,
+     "evidence": [
+      {
+       "rule_id": "classify.linetype",
+       "kind": "dash_count",
+       "value": 0
+      }
+     ]
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "dimension_line",
+     "score": 0.9,
+     "evidence": [
+      {
+       "rule_id": "assoc.arrow_pair",
+       "kind": "opposed_arrows",
+       "value": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stroke:2",
+   "sheet_id": "sheet:1",
+   "source_ids": [
+    "prim:2"
+   ],
+   "closed": false,
+   "primitives": [
+    {
+     "kind": "line",
+     "p0": [
+      555.711,
+      73.576
+     ],
+     "p1": [
+      555.711,
+      29.633
+     ],
+     "fit_residual_mm": 0.0
+    }
+   ],
+   "line_type_candidates": [
+    {
+     "value": "continuous",
+     "score": 1.0,
+     "evidence": [
+      {
+       "rule_id": "classify.linetype",
+       "kind": "dash_count",
+       "value": 0
+      }
+     ]
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "extension_line",
+     "score": 0.85,
+     "evidence": [
+      {
+       "rule_id": "ordinates.anchor",
+       "kind": "ends_on_outline",
+       "value": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stroke:3",
+   "sheet_id": "sheet:1",
+   "source_ids": [
+    "prim:3"
+   ],
+   "closed": false,
+   "primitives": [
+    {
+     "kind": "line",
+     "p0": [
+      544.703,
+      73.576
+     ],
+     "p1": [
+      544.703,
+      41.628
+     ],
+     "fit_residual_mm": 0.0
+    }
+   ],
+   "line_type_candidates": [
+    {
+     "value": "continuous",
+     "score": 1.0,
+     "evidence": [
+      {
+       "rule_id": "classify.linetype",
+       "kind": "dash_count",
+       "value": 0
+      }
+     ]
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "extension_line",
+     "score": 0.85,
+     "evidence": [
+      {
+       "rule_id": "ordinates.anchor",
+       "kind": "ends_on_outline",
+       "value": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stroke:4",
+   "sheet_id": "sheet:1",
+   "source_ids": [
+    "prim:6"
+   ],
+   "closed": false,
+   "primitives": [
+    {
+     "kind": "line",
+     "p0": [
+      561.199,
+      32.893
+     ],
+     "p1": [
+      555.711,
+      32.893
+     ],
+     "fit_residual_mm": 0.0
+    }
+   ],
+   "line_type_candidates": [
+    {
+     "value": "continuous",
+     "score": 1.0,
+     "evidence": [
+      {
+       "rule_id": "classify.linetype",
+       "kind": "dash_count",
+       "value": 0
+      }
+     ]
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "leader",
+     "score": 0.95,
+     "evidence": [
+      {
+       "rule_id": "leader.arrow_axis",
+       "kind": "cos",
+       "value": 1.0
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "text_runs": [
+  {
+   "id": "text:1",
+   "sheet_id": "sheet:1",
+   "text": "O",
+   "font": {
+    "name": "SolidEdgeISO1Symbols",
+    "size_mm": 4.607,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    561.552,
+    45.085
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     561.552,
+     41.204
+    ],
+    [
+     564.903,
+     41.204
+    ],
+    [
+     564.903,
+     45.791
+    ],
+    [
+     561.552,
+     45.791
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "O",
+     "decoded": "Ø",
+     "decode_rule": "profile:solid_edge:SolidEdgeISO1Symbols"
+    }
+   ]
+  },
+  {
+   "id": "text:2",
+   "sheet_id": "sheet:1",
+   "text": "5,5",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    565.503,
+    45.085
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     565.503,
+     41.134
+    ],
+    [
+     569.419,
+     41.134
+    ],
+    [
+     569.419,
+     45.967
+    ],
+    [
+     565.503,
+     45.967
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "5",
+     "decoded": "5",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": ",",
+     "decoded": ",",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "5",
+     "decoded": "5",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:3",
+   "sheet_id": "sheet:1",
+   "text": "H7",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    571.253,
+    45.085
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     571.253,
+     41.134
+    ],
+    [
+     575.063,
+     41.134
+    ],
+    [
+     575.063,
+     45.967
+    ],
+    [
+     571.253,
+     45.967
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "H",
+     "decoded": "H",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "7",
+     "decoded": "7",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:4",
+   "sheet_id": "sheet:1",
+   "text": "+0,012",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 2.409,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    579.402,
+    43.145
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     579.402,
+     41.169
+    ],
+    [
+     583.847,
+     41.169
+    ],
+    [
+     583.847,
+     43.568
+    ],
+    [
+     579.402,
+     43.568
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "+",
+     "decoded": "+",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": ",",
+     "decoded": ",",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "1",
+     "decoded": "1",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "2",
+     "decoded": "2",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:5",
+   "sheet_id": "sheet:1",
+   "text": "0",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 2.409,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    580.249,
+    45.544
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     580.249,
+     43.568
+    ],
+    [
+     581.166,
+     43.568
+    ],
+    [
+     581.166,
+     45.967
+    ],
+    [
+     580.249,
+     45.967
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:6",
+   "sheet_id": "sheet:1",
+   "text": "l",
+   "font": {
+    "name": "SolidEdgeISO1Symbols",
+    "size_mm": 4.607,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    563.104,
+    31.397
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     563.104,
+     27.517
+    ],
+    [
+     567.69,
+     27.517
+    ],
+    [
+     567.69,
+     32.138
+    ],
+    [
+     563.104,
+     32.138
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "l",
+     "decoded": "⌖",
+     "decode_rule": "profile:solid_edge:SolidEdgeISO1Symbols"
+    }
+   ]
+  },
+  {
+   "id": "text:7",
+   "sheet_id": "sheet:1",
+   "text": "O",
+   "font": {
+    "name": "SolidEdgeISO1Symbols",
+    "size_mm": 4.607,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    569.207,
+    31.397
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     569.207,
+     27.517
+    ],
+    [
+     572.558,
+     27.517
+    ],
+    [
+     572.558,
+     32.138
+    ],
+    [
+     569.207,
+     32.138
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "O",
+     "decoded": "Ø",
+     "decode_rule": "profile:solid_edge:SolidEdgeISO1Symbols"
+    }
+   ]
+  },
+  {
+   "id": "text:8",
+   "sheet_id": "sheet:1",
+   "text": "0.01",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    574.322,
+    31.397
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     574.322,
+     27.446
+    ],
+    [
+     579.684,
+     27.446
+    ],
+    [
+     579.684,
+     32.279
+    ],
+    [
+     574.322,
+     32.279
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": ".",
+     "decoded": ".",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "1",
+     "decoded": "1",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:9",
+   "sheet_id": "sheet:1",
+   "text": "n",
+   "font": {
+    "name": "SolidEdgeISO1Symbols",
+    "size_mm": 4.607,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    563.316,
+    37.43
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     563.316,
+     33.549
+    ],
+    [
+     567.478,
+     33.549
+    ],
+    [
+     567.478,
+     38.135
+    ],
+    [
+     563.316,
+     38.135
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "n",
+     "decoded": "⊥",
+     "decode_rule": "profile:solid_edge:SolidEdgeISO1Symbols"
+    }
+   ]
+  },
+  {
+   "id": "text:10",
+   "sheet_id": "sheet:1",
+   "text": "0.01",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    571.747,
+    37.43
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     571.747,
+     33.479
+    ],
+    [
+     577.109,
+     33.479
+    ],
+    [
+     577.109,
+     38.276
+    ],
+    [
+     571.747,
+     38.276
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": ".",
+     "decoded": ".",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "1",
+     "decoded": "1",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:11",
+   "sheet_id": "sheet:1",
+   "text": "A",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    582.612,
+    37.43
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     582.612,
+     33.479
+    ],
+    [
+     584.271,
+     33.479
+    ],
+    [
+     584.271,
+     38.276
+    ],
+    [
+     582.612,
+     38.276
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "A",
+     "decoded": "A",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:12",
+   "sheet_id": "sheet:1",
+   "text": "1.6",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    550.474,
+    34.643
+   ],
+   "direction": [
+    0,
+    -1
+   ],
+   "bbox": [
+    [
+     549.592,
+     31.044
+    ],
+    [
+     554.426,
+     31.044
+    ],
+    [
+     554.426,
+     34.643
+    ],
+    [
+     549.592,
+     34.643
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "1",
+     "decoded": "1",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": ".",
+     "decoded": ".",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "6",
+     "decoded": "6",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:13",
+   "sheet_id": "sheet:1",
+   "text": "A",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    153.106,
+    791.175
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     153.106,
+     787.224
+    ],
+    [
+     156.386,
+     787.224
+    ],
+    [
+     156.386,
+     792.021
+    ],
+    [
+     153.106,
+     792.021
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "A",
+     "decoded": "A",
+     "decode_rule": "unicode"
+    }
+   ]
+  }
+ ],
+ "tokens": [
+  {
+   "id": "tok:1",
+   "kind": "symbol",
+   "literal": "O",
+   "decoded": "Ø",
+   "text_run_ids": [
+    "text:1"
+   ]
+  },
+  {
+   "id": "tok:2",
+   "kind": "number",
+   "literal": "5,5",
+   "decoded": "5,5",
+   "text_run_ids": [
+    "text:2"
+   ]
+  },
+  {
+   "id": "tok:3",
+   "kind": "word",
+   "literal": "H7",
+   "decoded": "H7",
+   "text_run_ids": [
+    "text:3"
+   ]
+  },
+  {
+   "id": "tok:4",
+   "kind": "number",
+   "literal": "+0,012",
+   "decoded": "+0,012",
+   "text_run_ids": [
+    "text:4"
+   ],
+   "stacked": "upper"
+  },
+  {
+   "id": "tok:5",
+   "kind": "number",
+   "literal": "0",
+   "decoded": "0",
+   "text_run_ids": [
+    "text:5"
+   ],
+   "stacked": "lower"
+  },
+  {
+   "id": "tok:6",
+   "kind": "symbol",
+   "literal": "l",
+   "decoded": "⌖",
+   "text_run_ids": [
+    "text:6"
+   ]
+  },
+  {
+   "id": "tok:7",
+   "kind": "symbol",
+   "literal": "O",
+   "decoded": "Ø",
+   "text_run_ids": [
+    "text:7"
+   ]
+  },
+  {
+   "id": "tok:8",
+   "kind": "number",
+   "literal": "0.01",
+   "decoded": "0.01",
+   "text_run_ids": [
+    "text:8"
+   ]
+  },
+  {
+   "id": "tok:9",
+   "kind": "symbol",
+   "literal": "n",
+   "decoded": "⊥",
+   "text_run_ids": [
+    "text:9"
+   ]
+  },
+  {
+   "id": "tok:10",
+   "kind": "number",
+   "literal": "0.01",
+   "decoded": "0.01",
+   "text_run_ids": [
+    "text:10"
+   ]
+  },
+  {
+   "id": "tok:11",
+   "kind": "letter",
+   "literal": "A",
+   "decoded": "A",
+   "text_run_ids": [
+    "text:11"
+   ]
+  },
+  {
+   "id": "tok:12",
+   "kind": "number",
+   "literal": "1.6",
+   "decoded": "1.6",
+   "text_run_ids": [
+    "text:12"
+   ]
+  },
+  {
+   "id": "tok:13",
+   "kind": "letter",
+   "literal": "A",
+   "decoded": "A",
+   "text_run_ids": [
+    "text:13"
+   ]
+  }
+ ],
+ "symbols": [
+  {
+   "id": "sym:1",
+   "type": "arrowhead_filled",
+   "source_ids": [
+    "prim:4"
+   ],
+   "tip": [
+    555.711,
+    43.603
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "score": 1.0,
+   "evidence": []
+  },
+  {
+   "id": "sym:2",
+   "type": "arrowhead_filled",
+   "source_ids": [
+    "prim:5"
+   ],
+   "tip": [
+    544.703,
+    43.603
+   ],
+   "direction": [
+    -1,
+    0
+   ],
+   "score": 1.0,
+   "evidence": []
+  },
+  {
+   "id": "sym:3",
+   "type": "frame_box",
+   "source_ids": [],
+   "polygon": [
+    [
+     561.199,
+     26.811
+    ],
+    [
+     585.611,
+     26.811
+    ],
+    [
+     585.611,
+     32.844
+    ],
+    [
+     561.199,
+     32.844
+    ]
+   ],
+   "score": 1.0,
+   "evidence": []
+  },
+  {
+   "id": "sym:4",
+   "type": "frame_box",
+   "source_ids": [],
+   "polygon": [
+    [
+     561.199,
+     32.844
+    ],
+    [
+     585.611,
+     32.844
+    ],
+    [
+     585.611,
+     38.876
+    ],
+    [
+     561.199,
+     38.876
+    ]
+   ],
+   "score": 1.0,
+   "evidence": []
+  },
+  {
+   "id": "sym:5",
+   "type": "arrowhead_filled",
+   "source_ids": [
+    "prim:7"
+   ],
+   "tip": [
+    555.711,
+    32.893
+   ],
+   "direction": [
+    -1,
+    0
+   ],
+   "score": 1.0,
+   "evidence": []
+  },
+  {
+   "id": "sym:6",
+   "type": "texture_symbol",
+   "source_ids": [
+    "prim:8"
+   ],
+   "tip": [
+    555.711,
+    32.851
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "score": 0.9,
+   "evidence": [
+    {
+     "rule_id": "texture.legs_angle",
+     "kind": "angle_deg",
+     "value": 60.0
+    },
+    {
+     "rule_id": "texture.bar",
+     "kind": "closed_by_bar",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "sym:7",
+   "type": "datum_triangle_filled",
+   "source_ids": [
+    "prim:9"
+   ],
+   "tip": [
+    142.113,
+    789.686
+   ],
+   "direction": [
+    -1,
+    0
+   ],
+   "polygon": [
+    [
+     142.113,
+     787.576
+    ],
+    [
+     145.344,
+     787.576
+    ],
+    [
+     145.344,
+     791.81
+    ],
+    [
+     142.113,
+     791.81
+    ]
+   ],
+   "score": 1.0,
+   "evidence": []
+  },
+  {
+   "id": "sym:8",
+   "type": "frame_box",
+   "source_ids": [],
+   "polygon": [
+    [
+     150.989,
+     786.342
+    ],
+    [
+     158.397,
+     786.342
+    ],
+    [
+     158.397,
+     793.044
+    ],
+    [
+     150.989,
+     793.044
+    ]
+   ],
+   "score": 1.0,
+   "evidence": []
+  }
+ ],
+ "chains": [
+  {
+   "id": "chain:1",
+   "sheet_id": "sheet:1",
+   "nodes": [
+    {
+     "id": "node:1",
+     "point": [
+      544.703,
+      43.603
+     ],
+     "kind": "end"
+    },
+    {
+     "id": "node:2",
+     "point": [
+      555.711,
+      43.603
+     ],
+     "kind": "contact"
+    },
+    {
+     "id": "node:3",
+     "point": [
+      560.917,
+      43.603
+     ],
+     "kind": "end"
+    }
+   ],
+   "edges": [
+    {
+     "id": "edge:1",
+     "from": "node:1",
+     "to": "node:2",
+     "stroke_ids": [
+      "stroke:1"
+     ],
+     "shape": "line"
+    },
+    {
+     "id": "edge:2",
+     "from": "node:2",
+     "to": "node:3",
+     "stroke_ids": [
+      "stroke:1"
+     ],
+     "shape": "line"
+    }
+   ],
+   "terminals": [
+    {
+     "id": "term:1",
+     "node_id": "node:1",
+     "kind": "arrow_filled",
+     "symbol_id": "sym:2",
+     "direction": [
+      -1,
+      0
+     ]
+    },
+    {
+     "id": "term:2",
+     "node_id": "node:2",
+     "kind": "arrow_filled",
+     "symbol_id": "sym:1",
+     "direction": [
+      1,
+      0
+     ]
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "dimension_line",
+     "score": 0.9,
+     "evidence": [
+      {
+       "rule_id": "assoc.arrow_pair",
+       "kind": "opposed_arrows",
+       "value": true
+      }
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "id": "route:1",
+     "node_ids": [
+      "node:3",
+      "node:2",
+      "node:1"
+     ],
+     "score": 1.0,
+     "status": "resolved"
+    }
+   ]
+  },
+  {
+   "id": "chain:2",
+   "sheet_id": "sheet:1",
+   "nodes": [
+    {
+     "id": "node:4",
+     "point": [
+      555.711,
+      73.576
+     ],
+     "kind": "end"
+    },
+    {
+     "id": "node:5",
+     "point": [
+      555.711,
+      32.893
+     ],
+     "kind": "contact"
+    },
+    {
+     "id": "node:6",
+     "point": [
+      555.711,
+      29.633
+     ],
+     "kind": "end"
+    }
+   ],
+   "edges": [
+    {
+     "id": "edge:3",
+     "from": "node:4",
+     "to": "node:5",
+     "stroke_ids": [
+      "stroke:2"
+     ],
+     "shape": "line"
+    },
+    {
+     "id": "edge:4",
+     "from": "node:5",
+     "to": "node:6",
+     "stroke_ids": [
+      "stroke:2"
+     ],
+     "shape": "line"
+    }
+   ],
+   "terminals": [],
+   "role_candidates": [
+    {
+     "value": "extension_line",
+     "score": 0.85,
+     "evidence": [
+      {
+       "rule_id": "ordinates.anchor",
+       "kind": "ends_on_outline",
+       "value": true
+      }
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "id": "route:2",
+     "node_ids": [
+      "node:6",
+      "node:5",
+      "node:4"
+     ],
+     "score": 1.0,
+     "status": "resolved"
+    }
+   ]
+  },
+  {
+   "id": "chain:3",
+   "sheet_id": "sheet:1",
+   "nodes": [
+    {
+     "id": "node:7",
+     "point": [
+      544.703,
+      73.576
+     ],
+     "kind": "end"
+    },
+    {
+     "id": "node:8",
+     "point": [
+      544.703,
+      41.628
+     ],
+     "kind": "end"
+    }
+   ],
+   "edges": [
+    {
+     "id": "edge:5",
+     "from": "node:7",
+     "to": "node:8",
+     "stroke_ids": [
+      "stroke:3"
+     ],
+     "shape": "line"
+    }
+   ],
+   "terminals": [],
+   "role_candidates": [
+    {
+     "value": "extension_line",
+     "score": 0.85,
+     "evidence": [
+      {
+       "rule_id": "ordinates.anchor",
+       "kind": "ends_on_outline",
+       "value": true
+      }
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "id": "route:3",
+     "node_ids": [
+      "node:8",
+      "node:7"
+     ],
+     "score": 1.0,
+     "status": "resolved"
+    }
+   ]
+  },
+  {
+   "id": "chain:4",
+   "sheet_id": "sheet:1",
+   "nodes": [
+    {
+     "id": "node:9",
+     "point": [
+      561.199,
+      32.893
+     ],
+     "kind": "end"
+    },
+    {
+     "id": "node:10",
+     "point": [
+      555.711,
+      32.893
+     ],
+     "kind": "end"
+    }
+   ],
+   "edges": [
+    {
+     "id": "edge:6",
+     "from": "node:9",
+     "to": "node:10",
+     "stroke_ids": [
+      "stroke:4"
+     ],
+     "shape": "line"
+    }
+   ],
+   "terminals": [
+    {
+     "id": "term:3",
+     "node_id": "node:10",
+     "kind": "arrow_filled",
+     "symbol_id": "sym:5",
+     "direction": [
+      -1,
+      0
+     ]
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "leader",
+     "score": 0.95,
+     "evidence": [
+      {
+       "rule_id": "leader.arrow_axis",
+       "kind": "cos",
+       "value": 1.0
+      }
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "id": "route:4",
+     "node_ids": [
+      "node:9",
+      "node:10"
+     ],
+     "score": 1.0,
+     "status": "resolved"
+    }
+   ]
+  }
+ ],
+ "annotations": [
+  {
+   "id": "ann:56",
+   "type": "SizeDimension",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:11",
+     "score": 1.0,
+     "evidence": [
+      {
+       "rule_id": "view.nearest_region",
+       "kind": "distance_mm",
+       "value": 0.0
+      }
+     ]
+    }
+   ],
+   "printed": {
+    "literal": "Ø 5,5 H7 +0,012/0",
+    "token_ids": [
+     "tok:1",
+     "tok:2",
+     "tok:3",
+     "tok:4",
+     "tok:5"
+    ],
+    "text_run_ids": [
+     "text:1",
+     "text:2",
+     "text:3",
+     "text:4",
+     "text:5"
+    ],
+    "symbol_ids": []
+   },
+   "syntax": {
+    "status": "valid",
+    "grammar": "iso129-1:diameter+iso286:fit_with_deviations",
+    "errors": []
+   },
+   "region": [
+    [
+     561.552,
+     41.134
+    ],
+    [
+     583.847,
+     41.134
+    ],
+    [
+     583.847,
+     45.967
+    ],
+    [
+     561.552,
+     45.967
+    ]
+   ],
+   "nominal": {
+    "value": 5.5,
+    "unit": "mm",
+    "literal": "5,5",
+    "decimal_separator": ",",
+    "decimals": 1
+   },
+   "tolerance": {
+    "printed": {
+     "form": "fit_with_deviations",
+     "upper": {
+      "value": 0.012,
+      "unit": "mm",
+      "literal": "+0,012",
+      "decimal_separator": ",",
+      "decimals": 3
+     },
+     "lower": {
+      "value": 0.0,
+      "unit": "mm",
+      "literal": "0",
+      "decimal_separator": ",",
+      "decimals": 0
+     },
+     "fit": {
+      "literal": "H7",
+      "fundamental_deviation": "H",
+      "grade": 7,
+      "hole_or_shaft": "hole"
+     },
+     "token_ids": [
+      "tok:3",
+      "tok:4",
+      "tok:5"
+     ]
+    },
+    "derived": [],
+    "effective": "printed"
+   },
+   "status": "toleranced",
+   "count": null,
+   "modifiers": [],
+   "size_symbol": "diameter",
+   "size_basis": [
+    "iso129-1:diameter_symbol",
+    "iso286:fit_code"
+   ]
+  },
+  {
+   "id": "ann:57",
+   "type": "GeometricalTolerance",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:11",
+     "score": 1.0
+    }
+   ],
+   "printed": {
+    "literal": "⌖ Ø 0.01 / ⊥ 0.01 A",
+    "token_ids": [
+     "tok:6",
+     "tok:7",
+     "tok:8",
+     "tok:9",
+     "tok:10",
+     "tok:11"
+    ],
+    "text_run_ids": [
+     "text:6",
+     "text:7",
+     "text:8",
+     "text:9",
+     "text:10",
+     "text:11"
+    ],
+    "symbol_ids": [
+     "sym:3",
+     "sym:4"
+    ]
+   },
+   "syntax": {
+    "status": "valid",
+    "grammar": "iso1101:frame",
+    "errors": []
+   },
+   "region": [
+    [
+     561.199,
+     26.811
+    ],
+    [
+     585.611,
+     26.811
+    ],
+    [
+     585.611,
+     38.876
+    ],
+    [
+     561.199,
+     38.876
+    ]
+   ],
+   "frame": {
+    "rows": [
+     {
+      "index": 0,
+      "characteristic": {
+       "value": "position",
+       "literal": "⌖",
+       "token_ids": [
+        "tok:6"
+       ]
+      },
+      "compartments": [
+       {
+        "index": 0,
+        "kind": "characteristic",
+        "token_ids": [
+         "tok:6"
+        ]
+       },
+       {
+        "index": 1,
+        "kind": "tolerance",
+        "token_ids": [
+         "tok:7",
+         "tok:8"
+        ]
+       }
+      ],
+      "zone": {
+       "shape": "diameter",
+       "value": {
+        "value": 0.01,
+        "unit": "mm",
+        "literal": "0.01",
+        "decimal_separator": ".",
+        "decimals": 2
+       },
+       "modifiers": []
+      },
+      "datum_references": []
+     },
+     {
+      "index": 1,
+      "characteristic": {
+       "value": "perpendicularity",
+       "literal": "⊥",
+       "token_ids": [
+        "tok:9"
+       ]
+      },
+      "compartments": [
+       {
+        "index": 0,
+        "kind": "characteristic",
+        "token_ids": [
+         "tok:9"
+        ]
+       },
+       {
+        "index": 1,
+        "kind": "tolerance",
+        "token_ids": [
+         "tok:10"
+        ]
+       },
+       {
+        "index": 2,
+        "kind": "datum",
+        "token_ids": [
+         "tok:11"
+        ]
+       }
+      ],
+      "zone": {
+       "shape": "none",
+       "value": {
+        "value": 0.01,
+        "unit": "mm",
+        "literal": "0.01",
+        "decimal_separator": ".",
+        "decimals": 2
+       },
+       "modifiers": []
+      },
+      "datum_references": [
+       {
+        "order": 1,
+        "compartment_index": 2,
+        "relation": "single",
+        "elements": [
+         {
+          "letter": "A",
+          "modifiers": []
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "composite": false,
+    "box_symbol_ids": [
+     "sym:3",
+     "sym:4"
+    ]
+   },
+   "adjacent_indications": []
+  },
+  {
+   "id": "ann:91",
+   "type": "SurfaceTextureSpecification",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:11",
+     "score": 1.0
+    }
+   ],
+   "printed": {
+    "literal": "1.6",
+    "token_ids": [
+     "tok:12"
+    ],
+    "text_run_ids": [
+     "text:12"
+    ],
+    "symbol_ids": [
+     "sym:6"
+    ]
+   },
+   "syntax": {
+    "status": "valid",
+    "grammar": "iso1302:value_only",
+    "errors": []
+   },
+   "region": [
+    [
+     545.924,
+     27.199
+    ],
+    [
+     555.731,
+     27.199
+    ],
+    [
+     555.731,
+     35.736
+    ],
+    [
+     545.924,
+     35.736
+    ]
+   ],
+   "symbol_variant": "removal_required",
+   "all_around": false,
+   "requirements": [
+    {
+     "parameter": {
+      "printed": null,
+      "derived": {
+       "value": "Ra",
+       "derivation": {
+        "rule_id": "texture.value_only_means_Ra",
+        "standard": {
+         "id": "ISO 1302",
+         "edition": "1992",
+         "cited_as": null
+        },
+        "inputs": [
+         "ann:91"
+        ],
+        "note": "Legacy practice; ISO 1302:2002 and ISO 21920-1 require the parameter to be printed."
+       }
+      }
+     },
+     "value": {
+      "value": 1.6,
+      "unit": "um",
+      "literal": "1.6",
+      "decimal_separator": ".",
+      "decimals": 1
+     },
+     "limit": null,
+     "filter": null,
+     "evaluation_length": null,
+     "token_ids": [
+      "tok:12"
+     ]
+    }
+   ],
+   "lay": null,
+   "process": null,
+   "indication_style": "legacy",
+   "diagnostic_ids": [
+    "diag:1"
+   ]
+  },
+  {
+   "id": "ann:33",
+   "type": "DatumFeatureIndication",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:9",
+     "score": 1.0
+    }
+   ],
+   "printed": {
+    "literal": "A",
+    "token_ids": [
+     "tok:13"
+    ],
+    "text_run_ids": [
+     "text:13"
+    ],
+    "symbol_ids": [
+     "sym:7",
+     "sym:8"
+    ]
+   },
+   "syntax": {
+    "status": "valid",
+    "grammar": "iso5459:datum_feature_indicator",
+    "errors": []
+   },
+   "region": [
+    [
+     142.113,
+     786.342
+    ],
+    [
+     158.397,
+     786.342
+    ],
+    [
+     158.397,
+     793.044
+    ],
+    [
+     142.113,
+     793.044
+    ]
+   ],
+   "letter": "A",
+   "triangle": "filled"
+  }
+ ],
+ "associations": [
+  {
+   "id": "assoc:1",
+   "annotation_id": "ann:56",
+   "relation": "dimension_line",
+   "target_annotation_id": null,
+   "chain_ids": [
+    "chain:1"
+   ],
+   "route_ids": [
+    "route:1"
+   ],
+   "terminal_ids": [
+    "term:1",
+    "term:2"
+   ],
+   "attachment_fact_ids": [],
+   "rule_ids": [
+    "iso129-1.dimension_line_two_terminals",
+    "assoc.text_beside_line_end"
+   ],
+   "evidence": [
+    {
+     "rule_id": "assoc.measured_vs_nominal",
+     "kind": "measured_vs_nominal",
+     "value": 5.5038,
+     "note": "2:1 scale: 11.008 mm on sheet"
+    }
+   ],
+   "score": 0.97,
+   "status": "resolved",
+   "reason": "only feasible dimension line for this label",
+   "ambiguity_origin": "none"
+  },
+  {
+   "id": "assoc:2",
+   "annotation_id": "ann:56",
+   "relation": "extension_line",
+   "target_annotation_id": null,
+   "chain_ids": [
+    "chain:2",
+    "chain:3"
+   ],
+   "route_ids": [
+    "route:2",
+    "route:3"
+   ],
+   "terminal_ids": [],
+   "attachment_fact_ids": [
+    "fact:1",
+    "fact:2"
+   ],
+   "rule_ids": [
+    "iso129-1.extension_through_terminal"
+   ],
+   "evidence": [],
+   "score": 0.95,
+   "status": "resolved",
+   "reason": "extension lines pass through both terminals",
+   "ambiguity_origin": "none"
+  },
+  {
+   "id": "assoc:3",
+   "annotation_id": "ann:57",
+   "relation": "frame_leader",
+   "target_annotation_id": null,
+   "chain_ids": [
+    "chain:4"
+   ],
+   "route_ids": [
+    "route:4"
+   ],
+   "terminal_ids": [
+    "term:3"
+   ],
+   "attachment_fact_ids": [
+    "fact:3"
+   ],
+   "rule_ids": [
+    "iso1101.leader_from_frame"
+   ],
+   "evidence": [
+    {
+     "rule_id": "assoc.leader_start_on_frame",
+     "kind": "distance_mm",
+     "value": 0.0
+    }
+   ],
+   "score": 0.98,
+   "status": "resolved",
+   "reason": "leader starts at the frame border",
+   "ambiguity_origin": "none"
+  },
+  {
+   "id": "assoc:4",
+   "annotation_id": "ann:57",
+   "relation": "frame_to_dimension",
+   "target_annotation_id": "ann:56",
+   "chain_ids": [
+    "chain:2"
+   ],
+   "route_ids": [],
+   "terminal_ids": [
+    "term:3"
+   ],
+   "attachment_fact_ids": [
+    "fact:3"
+   ],
+   "rule_ids": [
+    "iso1101.leader_on_extension_line"
+   ],
+   "evidence": [],
+   "score": 0.9,
+   "status": "resolved",
+   "reason": "the leader ends on an extension line of Ø5,5 H7, not in line with its dimension line",
+   "ambiguity_origin": "none"
+  },
+  {
+   "id": "assoc:5",
+   "annotation_id": "ann:57",
+   "relation": "datum_to_frame",
+   "target_annotation_id": "ann:33",
+   "chain_ids": [],
+   "route_ids": [],
+   "terminal_ids": [],
+   "attachment_fact_ids": [],
+   "rule_ids": [
+    "iso5459.letter_match"
+   ],
+   "evidence": [
+    {
+     "rule_id": "datum.letter",
+     "kind": "letter",
+     "value": "A"
+    }
+   ],
+   "score": 1.0,
+   "status": "resolved",
+   "reason": "datum letter A is indicated once on the sheet",
+   "ambiguity_origin": "none"
+  },
+  {
+   "id": "assoc:6",
+   "annotation_id": "ann:91",
+   "relation": "label_to_symbol",
+   "target_annotation_id": null,
+   "chain_ids": [],
+   "route_ids": [],
+   "terminal_ids": [],
+   "attachment_fact_ids": [
+    "fact:4"
+   ],
+   "rule_ids": [
+    "iso1302.value_beside_symbol"
+   ],
+   "evidence": [
+    {
+     "rule_id": "assoc.label_symbol_distance",
+     "kind": "distance_mm",
+     "value": 1.2
+    }
+   ],
+   "score": 0.9,
+   "status": "resolved",
+   "reason": "nearest texture symbol, no competitor within reach",
+   "ambiguity_origin": "none"
+  }
+ ],
+ "association_groups": [
+  {
+   "id": "group:1",
+   "rule": "exactly_one",
+   "candidate_ids": [
+    "assoc:1"
+   ],
+   "selected_ids": [
+    "assoc:1"
+   ],
+   "status": "resolved",
+   "margin": null,
+   "reason": "single candidate"
+  },
+  {
+   "id": "group:2",
+   "rule": "exactly_one",
+   "candidate_ids": [
+    "assoc:3"
+   ],
+   "selected_ids": [
+    "assoc:3"
+   ],
+   "status": "resolved",
+   "margin": null,
+   "reason": "single candidate"
+  }
+ ],
+ "attachment_facts": [
+  {
+   "id": "fact:1",
+   "kind": "extension_origin_on_outline",
+   "subject_id": "node:4",
+   "object_ids": [
+    "chain:2"
+   ],
+   "point": [
+    555.711,
+    73.576
+   ],
+   "distance_mm": 0.0,
+   "evidence": [
+    {
+     "rule_id": "ordinates.anchor",
+     "kind": "anchor_kind",
+     "value": "endpoint"
+    }
+   ],
+   "status": "observed"
+  },
+  {
+   "id": "fact:2",
+   "kind": "extension_origin_on_outline",
+   "subject_id": "node:7",
+   "object_ids": [
+    "chain:3"
+   ],
+   "point": [
+    544.703,
+    73.576
+   ],
+   "distance_mm": 0.0,
+   "evidence": [
+    {
+     "rule_id": "ordinates.anchor",
+     "kind": "anchor_kind",
+     "value": "endpoint"
+    }
+   ],
+   "status": "observed"
+  },
+  {
+   "id": "fact:3",
+   "kind": "terminal_on_extension_line",
+   "subject_id": "term:3",
+   "object_ids": [
+    "chain:2",
+    "ann:56"
+   ],
+   "point": [
+    555.711,
+    32.893
+   ],
+   "distance_mm": 0.0,
+   "evidence": [
+    {
+     "rule_id": "attach.offset_from_dimension_line",
+     "kind": "distance_mm",
+     "value": 10.71,
+     "note": "clearly away from the dimension line: ISO 1101 reads this as the integral feature (to verify)"
+    }
+   ],
+   "status": "observed"
+  },
+  {
+   "id": "fact:4",
+   "kind": "terminal_on_extension_line",
+   "subject_id": "sym:6",
+   "object_ids": [
+    "chain:2"
+   ],
+   "point": [
+    555.711,
+    32.851
+   ],
+   "distance_mm": 0.0,
+   "evidence": [],
+   "status": "observed"
+  },
+  {
+   "id": "fact:5",
+   "kind": "terminal_on_outline",
+   "subject_id": "sym:7",
+   "object_ids": [],
+   "point": [
+    142.113,
+    789.686
+   ],
+   "distance_mm": 0.0,
+   "evidence": [
+    {
+     "rule_id": "datum.base_on_stroke",
+     "kind": "role",
+     "value": "visible_outline"
+    }
+   ],
+   "status": "observed"
+  }
+ ],
+ "diagnostics": [
+  {
+   "id": "diag:1",
+   "severity": "info",
+   "code": "TEXTURE_PARAMETER_NOT_PRINTED",
+   "message": "Surface texture value printed without a parameter; Ra assumed by legacy practice.",
+   "source_ids": [
+    "text:12",
+    "sym:6"
+   ],
+   "rule_id": "texture.value_only_means_Ra"
+  }
+ ]
+}

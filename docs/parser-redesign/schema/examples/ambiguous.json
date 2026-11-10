@@ -1,0 +1,1177 @@
+{
+ "schema_version": "0.1.0-draft",
+ "document_id": "synthetic/example-ambiguous",
+ "source": {
+  "file_name": "synthetic-ambiguous.pdf",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "page_count": 1,
+  "producer": null,
+  "creator": null,
+  "profile": {
+   "id": "solid_edge",
+   "version": "0.1",
+   "selected_by": [
+    {
+     "rule_id": "profile.producer_match",
+     "kind": "profile_match",
+     "value": "unknown"
+    }
+   ]
+  },
+  "parser": {
+   "name": "drawing2pmi",
+   "version": "0.1.0-draft"
+  }
+ },
+ "sheets": [
+  {
+   "id": "sheet:1",
+   "page_index": 0,
+   "size": {
+    "width": 1189.0,
+    "height": 841.0
+   },
+   "pdf_to_sheet": {
+    "from": "pdf_user_space_pt",
+    "to": "sheet:1",
+    "matrix": [
+     0.352778,
+     0,
+     0,
+     -0.352778,
+     0,
+     841.0
+    ],
+    "invertible": true
+   },
+   "title_block": null,
+   "projection_method": {
+    "value": "first_angle",
+    "source_ids": []
+   },
+   "scale": null
+  }
+ ],
+ "views": [
+  {
+   "id": "view:1",
+   "sheet_id": "sheet:1",
+   "kind": "orthographic",
+   "label": null,
+   "region": [
+    [
+     230,
+     550
+    ],
+    [
+     460,
+     550
+    ],
+    [
+     460,
+     740
+    ],
+    [
+     230,
+     740
+    ]
+   ],
+   "scale": {
+    "printed": null,
+    "fitted": null,
+    "source": "unknown"
+   },
+   "frame": null,
+   "relations": []
+  }
+ ],
+ "primitives": [],
+ "strokes": [],
+ "text_runs": [
+  {
+   "id": "text:1",
+   "sheet_id": "sheet:1",
+   "text": "R",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    300.0,
+    604.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     300.0,
+     600.0
+    ],
+    [
+     302.0,
+     600.0
+    ],
+    [
+     302.0,
+     604.0
+    ],
+    [
+     300.0,
+     604.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "R",
+     "decoded": "R",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:2",
+   "sheet_id": "sheet:1",
+   "text": "3",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    302.5,
+    604.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     302.5,
+     600.0
+    ],
+    [
+     304.5,
+     600.0
+    ],
+    [
+     304.5,
+     604.0
+    ],
+    [
+     302.5,
+     604.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "3",
+     "decoded": "3",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:3",
+   "sheet_id": "sheet:1",
+   "text": "R",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    310.0,
+    610.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     310.0,
+     606.0
+    ],
+    [
+     312.0,
+     606.0
+    ],
+    [
+     312.0,
+     610.0
+    ],
+    [
+     310.0,
+     610.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "R",
+     "decoded": "R",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:4",
+   "sheet_id": "sheet:1",
+   "text": "3",
+   "font": {
+    "name": "SolidEdgeISO",
+    "size_mm": 4.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    312.5,
+    610.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     312.5,
+     606.0
+    ],
+    [
+     314.5,
+     606.0
+    ],
+    [
+     314.5,
+     610.0
+    ],
+    [
+     312.5,
+     610.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "3",
+     "decoded": "3",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:5",
+   "sheet_id": "sheet:1",
+   "text": "m UNI EN 22768",
+   "font": {
+    "name": "Helvetica",
+    "size_mm": 2.822,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    1100.0,
+    805.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     1100.0,
+     800.0
+    ],
+    [
+     1150.0,
+     800.0
+    ],
+    [
+     1150.0,
+     805.0
+    ],
+    [
+     1100.0,
+     805.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "m",
+     "decoded": "m",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": " ",
+     "decoded": " ",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "U",
+     "decoded": "U",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "N",
+     "decoded": "N",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "I",
+     "decoded": "I",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": " ",
+     "decoded": " ",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "E",
+     "decoded": "E",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "N",
+     "decoded": "N",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": " ",
+     "decoded": " ",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "2",
+     "decoded": "2",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "2",
+     "decoded": "2",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "7",
+     "decoded": "7",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "6",
+     "decoded": "6",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "8",
+     "decoded": "8",
+     "decode_rule": "unicode"
+    }
+   ]
+  }
+ ],
+ "tokens": [
+  {
+   "id": "tok:1",
+   "kind": "letter",
+   "literal": "R",
+   "decoded": "R",
+   "text_run_ids": [
+    "text:1"
+   ]
+  },
+  {
+   "id": "tok:2",
+   "kind": "number",
+   "literal": "3",
+   "decoded": "3",
+   "text_run_ids": [
+    "text:2"
+   ]
+  },
+  {
+   "id": "tok:3",
+   "kind": "letter",
+   "literal": "R",
+   "decoded": "R",
+   "text_run_ids": [
+    "text:3"
+   ]
+  },
+  {
+   "id": "tok:4",
+   "kind": "number",
+   "literal": "3",
+   "decoded": "3",
+   "text_run_ids": [
+    "text:4"
+   ]
+  },
+  {
+   "id": "tok:5",
+   "kind": "word",
+   "literal": "m",
+   "decoded": "m",
+   "text_run_ids": [
+    "text:5"
+   ]
+  },
+  {
+   "id": "tok:6",
+   "kind": "word",
+   "literal": "UNI EN 22768",
+   "decoded": "UNI EN 22768",
+   "text_run_ids": [
+    "text:5"
+   ]
+  }
+ ],
+ "symbols": [],
+ "chains": [
+  {
+   "id": "chain:1",
+   "sheet_id": "sheet:1",
+   "nodes": [
+    {
+     "id": "node:1",
+     "point": [
+      304.0,
+      598.0
+     ],
+     "kind": "end"
+    },
+    {
+     "id": "node:2",
+     "point": [
+      280.0,
+      580.0
+     ],
+     "kind": "end"
+    }
+   ],
+   "edges": [
+    {
+     "id": "edge:1",
+     "from": "node:1",
+     "to": "node:2",
+     "stroke_ids": [],
+     "shape": "line"
+    }
+   ],
+   "terminals": [
+    {
+     "id": "term:1",
+     "node_id": "node:2",
+     "kind": "arrow_filled",
+     "symbol_id": null,
+     "direction": null
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "leader",
+     "score": 0.9
+    }
+   ],
+   "routes": [
+    {
+     "id": "route:1",
+     "node_ids": [
+      "node:1",
+      "node:2"
+     ],
+     "score": 1.0,
+     "status": "resolved"
+    }
+   ]
+  },
+  {
+   "id": "chain:2",
+   "sheet_id": "sheet:1",
+   "nodes": [
+    {
+     "id": "node:3",
+     "point": [
+      306.0,
+      610.0
+     ],
+     "kind": "end"
+    },
+    {
+     "id": "node:4",
+     "point": [
+      330.0,
+      630.0
+     ],
+     "kind": "end"
+    }
+   ],
+   "edges": [
+    {
+     "id": "edge:2",
+     "from": "node:3",
+     "to": "node:4",
+     "stroke_ids": [],
+     "shape": "line"
+    }
+   ],
+   "terminals": [
+    {
+     "id": "term:2",
+     "node_id": "node:4",
+     "kind": "arrow_filled",
+     "symbol_id": null,
+     "direction": null
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "leader",
+     "score": 0.9
+    }
+   ],
+   "routes": [
+    {
+     "id": "route:2",
+     "node_ids": [
+      "node:3",
+      "node:4"
+     ],
+     "score": 1.0,
+     "status": "resolved"
+    }
+   ]
+  },
+  {
+   "id": "chain:3",
+   "sheet_id": "sheet:1",
+   "nodes": [
+    {
+     "id": "node:5",
+     "point": [
+      400.0,
+      600.0
+     ],
+     "kind": "end"
+    },
+    {
+     "id": "node:6",
+     "point": [
+      380.0,
+      620.0
+     ],
+     "kind": "junction"
+    },
+    {
+     "id": "node:7",
+     "point": [
+      360.0,
+      640.0
+     ],
+     "kind": "end"
+    },
+    {
+     "id": "node:8",
+     "point": [
+      380.0,
+      660.0
+     ],
+     "kind": "end"
+    }
+   ],
+   "edges": [
+    {
+     "id": "edge:3",
+     "from": "node:5",
+     "to": "node:6",
+     "stroke_ids": [],
+     "shape": "line"
+    },
+    {
+     "id": "edge:4",
+     "from": "node:6",
+     "to": "node:7",
+     "stroke_ids": [],
+     "shape": "line"
+    },
+    {
+     "id": "edge:5",
+     "from": "node:6",
+     "to": "node:8",
+     "stroke_ids": [],
+     "shape": "line"
+    }
+   ],
+   "terminals": [
+    {
+     "id": "term:3",
+     "node_id": "node:7",
+     "kind": "arrow_filled",
+     "symbol_id": null,
+     "direction": null
+    },
+    {
+     "id": "term:4",
+     "node_id": "node:8",
+     "kind": "none",
+     "symbol_id": null,
+     "direction": null
+    }
+   ],
+   "role_candidates": [
+    {
+     "value": "leader",
+     "score": 0.6
+    },
+    {
+     "value": "extension_line",
+     "score": 0.4
+    }
+   ],
+   "routes": [
+    {
+     "id": "route:3",
+     "node_ids": [
+      "node:5",
+      "node:6",
+      "node:7"
+     ],
+     "score": 0.55,
+     "status": "ambiguous",
+     "reason": "straight continuation to an arrowhead"
+    },
+    {
+     "id": "route:4",
+     "node_ids": [
+      "node:5",
+      "node:6",
+      "node:8"
+     ],
+     "score": 0.45,
+     "status": "ambiguous",
+     "reason": "turn at the junction onto a thin line of the same width; could be a leader elbow or a crossing extension line"
+    }
+   ]
+  }
+ ],
+ "annotations": [
+  {
+   "id": "ann:1",
+   "type": "RadiusDimension",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:1",
+     "score": 1.0
+    }
+   ],
+   "printed": {
+    "literal": "R 3",
+    "token_ids": [
+     "tok:1",
+     "tok:2"
+    ],
+    "text_run_ids": [
+     "text:1",
+     "text:2"
+    ],
+    "symbol_ids": []
+   },
+   "syntax": {
+    "status": "valid",
+    "grammar": "iso129-1:radius",
+    "errors": []
+   },
+   "region": [
+    [
+     300.0,
+     600.0
+    ],
+    [
+     304.5,
+     600.0
+    ],
+    [
+     304.5,
+     604.0
+    ],
+    [
+     300.0,
+     604.0
+    ]
+   ],
+   "nominal": {
+    "value": 3.0,
+    "unit": "mm",
+    "literal": "3",
+    "decimal_separator": ",",
+    "decimals": 0
+   },
+   "tolerance": {
+    "printed": {
+     "form": "none",
+     "upper": null,
+     "lower": null,
+     "fit": null,
+     "token_ids": []
+    },
+    "derived": [
+     {
+      "upper": {
+       "value": 0.2,
+       "unit": "mm",
+       "literal": "0,2",
+       "decimal_separator": ",",
+       "decimals": 1
+      },
+      "lower": {
+       "value": -0.2,
+       "unit": "mm",
+       "literal": "-0,2",
+       "decimal_separator": ",",
+       "decimals": 1
+      },
+      "derivation": {
+       "rule_id": "iso2768-1.table2_radius",
+       "standard": {
+        "id": "ISO 2768-1",
+        "edition": null,
+        "cited_as": "m UNI EN 22768"
+       },
+       "inputs": [
+        "ann:3"
+       ],
+       "note": "class m, external radius: 0.5 up to 3 is ±0.2 (the first range includes its upper bound 3)."
+      }
+     }
+    ],
+    "effective": "derived"
+   },
+   "status": "toleranced",
+   "count": null,
+   "modifiers": [],
+   "prefix": "R"
+  },
+  {
+   "id": "ann:2",
+   "type": "RadiusDimension",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:1",
+     "score": 1.0
+    }
+   ],
+   "printed": {
+    "literal": "R 3",
+    "token_ids": [
+     "tok:3",
+     "tok:4"
+    ],
+    "text_run_ids": [
+     "text:3",
+     "text:4"
+    ],
+    "symbol_ids": []
+   },
+   "syntax": {
+    "status": "valid",
+    "grammar": "iso129-1:radius",
+    "errors": []
+   },
+   "region": [
+    [
+     310.0,
+     606.0
+    ],
+    [
+     314.5,
+     606.0
+    ],
+    [
+     314.5,
+     610.0
+    ],
+    [
+     310.0,
+     610.0
+    ]
+   ],
+   "nominal": {
+    "value": 3.0,
+    "unit": "mm",
+    "literal": "3",
+    "decimal_separator": ",",
+    "decimals": 0
+   },
+   "tolerance": {
+    "printed": {
+     "form": "none",
+     "upper": null,
+     "lower": null,
+     "fit": null,
+     "token_ids": []
+    },
+    "derived": [
+     {
+      "upper": {
+       "value": 0.2,
+       "unit": "mm",
+       "literal": "0,2",
+       "decimal_separator": ",",
+       "decimals": 1
+      },
+      "lower": {
+       "value": -0.2,
+       "unit": "mm",
+       "literal": "-0,2",
+       "decimal_separator": ",",
+       "decimals": 1
+      },
+      "derivation": {
+       "rule_id": "iso2768-1.table2_radius",
+       "standard": {
+        "id": "ISO 2768-1",
+        "edition": null,
+        "cited_as": "m UNI EN 22768"
+       },
+       "inputs": [
+        "ann:3"
+       ],
+       "note": "class m, external radius: 0.5 up to 3 is ±0.2 (the first range includes its upper bound 3)."
+      }
+     }
+    ],
+    "effective": "derived"
+   },
+   "status": "toleranced",
+   "count": null,
+   "modifiers": [],
+   "prefix": "R"
+  },
+  {
+   "id": "ann:3",
+   "type": "GeneralSpecification",
+   "sheet_id": "sheet:1",
+   "view_candidates": [],
+   "printed": {
+    "literal": "m UNI EN 22768",
+    "token_ids": [
+     "tok:5",
+     "tok:6"
+    ],
+    "text_run_ids": [
+     "text:5"
+    ],
+    "symbol_ids": []
+   },
+   "syntax": {
+    "status": "valid",
+    "grammar": "general:tolerance_class",
+    "errors": []
+   },
+   "region": [
+    [
+     1100,
+     800
+    ],
+    [
+     1150,
+     800
+    ],
+    [
+     1150,
+     805
+    ],
+    [
+     1100,
+     805
+    ]
+   ],
+   "scope": "sheet",
+   "kind": "general_tolerance",
+   "standard": {
+    "id": "ISO 2768-1",
+    "edition": null,
+    "cited_as": "m UNI EN 22768"
+   },
+   "class": "m",
+   "table": [],
+   "requirements": [],
+   "exceptions": []
+  }
+ ],
+ "associations": [
+  {
+   "id": "assoc:1",
+   "annotation_id": "ann:1",
+   "relation": "leader",
+   "target_annotation_id": null,
+   "chain_ids": [
+    "chain:1"
+   ],
+   "route_ids": [
+    "route:1"
+   ],
+   "terminal_ids": [
+    "term:1"
+   ],
+   "attachment_fact_ids": [
+    "fact:1"
+   ],
+   "rule_ids": [
+    "iso129-1.radius_leader",
+    "assoc.label_near_leader_start"
+   ],
+   "evidence": [
+    {
+     "rule_id": "assoc.label_leader_distance",
+     "kind": "distance_mm",
+     "value": 4.98
+    },
+    {
+     "rule_id": "radius.measured_vs_nominal",
+     "kind": "measured_vs_nominal",
+     "value": 3.0
+    }
+   ],
+   "score": 0.51,
+   "status": "ambiguous",
+   "reason": "both labels read R 3 and both leaders end on R3 arcs; the two assignments differ by a score margin of 0.04, below the doubt threshold",
+   "ambiguity_origin": "drawing_permits"
+  },
+  {
+   "id": "assoc:2",
+   "annotation_id": "ann:1",
+   "relation": "leader",
+   "target_annotation_id": null,
+   "chain_ids": [
+    "chain:2"
+   ],
+   "route_ids": [
+    "route:2"
+   ],
+   "terminal_ids": [
+    "term:2"
+   ],
+   "attachment_fact_ids": [
+    "fact:2"
+   ],
+   "rule_ids": [
+    "iso129-1.radius_leader",
+    "assoc.label_near_leader_start"
+   ],
+   "evidence": [
+    {
+     "rule_id": "assoc.label_leader_distance",
+     "kind": "distance_mm",
+     "value": 5.02
+    },
+    {
+     "rule_id": "radius.measured_vs_nominal",
+     "kind": "measured_vs_nominal",
+     "value": 3.0
+    }
+   ],
+   "score": 0.49,
+   "status": "ambiguous",
+   "reason": "both labels read R 3 and both leaders end on R3 arcs; the two assignments differ by a score margin of 0.04, below the doubt threshold",
+   "ambiguity_origin": "drawing_permits"
+  },
+  {
+   "id": "assoc:3",
+   "annotation_id": "ann:2",
+   "relation": "leader",
+   "target_annotation_id": null,
+   "chain_ids": [
+    "chain:1"
+   ],
+   "route_ids": [
+    "route:1"
+   ],
+   "terminal_ids": [
+    "term:1"
+   ],
+   "attachment_fact_ids": [
+    "fact:1"
+   ],
+   "rule_ids": [
+    "iso129-1.radius_leader",
+    "assoc.label_near_leader_start"
+   ],
+   "evidence": [
+    {
+     "rule_id": "assoc.label_leader_distance",
+     "kind": "distance_mm",
+     "value": 5.02
+    },
+    {
+     "rule_id": "radius.measured_vs_nominal",
+     "kind": "measured_vs_nominal",
+     "value": 3.0
+    }
+   ],
+   "score": 0.49,
+   "status": "ambiguous",
+   "reason": "both labels read R 3 and both leaders end on R3 arcs; the two assignments differ by a score margin of 0.04, below the doubt threshold",
+   "ambiguity_origin": "drawing_permits"
+  },
+  {
+   "id": "assoc:4",
+   "annotation_id": "ann:2",
+   "relation": "leader",
+   "target_annotation_id": null,
+   "chain_ids": [
+    "chain:2"
+   ],
+   "route_ids": [
+    "route:2"
+   ],
+   "terminal_ids": [
+    "term:2"
+   ],
+   "attachment_fact_ids": [
+    "fact:2"
+   ],
+   "rule_ids": [
+    "iso129-1.radius_leader",
+    "assoc.label_near_leader_start"
+   ],
+   "evidence": [
+    {
+     "rule_id": "assoc.label_leader_distance",
+     "kind": "distance_mm",
+     "value": 4.98
+    },
+    {
+     "rule_id": "radius.measured_vs_nominal",
+     "kind": "measured_vs_nominal",
+     "value": 3.0
+    }
+   ],
+   "score": 0.51,
+   "status": "ambiguous",
+   "reason": "both labels read R 3 and both leaders end on R3 arcs; the two assignments differ by a score margin of 0.04, below the doubt threshold",
+   "ambiguity_origin": "drawing_permits"
+  }
+ ],
+ "association_groups": [
+  {
+   "id": "group:1",
+   "rule": "exactly_one",
+   "candidate_ids": [
+    "assoc:1",
+    "assoc:2"
+   ],
+   "selected_ids": [],
+   "status": "ambiguous",
+   "margin": 0.02,
+   "reason": "label ann:1: two feasible leaders"
+  },
+  {
+   "id": "group:2",
+   "rule": "exactly_one",
+   "candidate_ids": [
+    "assoc:3",
+    "assoc:4"
+   ],
+   "selected_ids": [],
+   "status": "ambiguous",
+   "margin": 0.02,
+   "reason": "label ann:2: two feasible leaders"
+  },
+  {
+   "id": "group:3",
+   "rule": "at_most_one",
+   "candidate_ids": [
+    "assoc:1",
+    "assoc:3"
+   ],
+   "selected_ids": [],
+   "status": "ambiguous",
+   "margin": null,
+   "reason": "leader chain:1 serves at most one label"
+  },
+  {
+   "id": "group:4",
+   "rule": "at_most_one",
+   "candidate_ids": [
+    "assoc:2",
+    "assoc:4"
+   ],
+   "selected_ids": [],
+   "status": "ambiguous",
+   "margin": null,
+   "reason": "leader chain:2 serves at most one label"
+  }
+ ],
+ "attachment_facts": [
+  {
+   "id": "fact:1",
+   "kind": "terminal_on_outline",
+   "subject_id": "term:1",
+   "object_ids": [],
+   "point": [
+    280.0,
+    580.0
+   ],
+   "distance_mm": 0.02,
+   "evidence": [
+    {
+     "rule_id": "radius.arc_at_tip",
+     "kind": "arc_radius_mm",
+     "value": 3.0
+    }
+   ],
+   "status": "observed"
+  },
+  {
+   "id": "fact:2",
+   "kind": "terminal_on_outline",
+   "subject_id": "term:2",
+   "object_ids": [],
+   "point": [
+    330.0,
+    630.0
+   ],
+   "distance_mm": 0.02,
+   "evidence": [
+    {
+     "rule_id": "radius.arc_at_tip",
+     "kind": "arc_radius_mm",
+     "value": 3.0
+    }
+   ],
+   "status": "observed"
+  }
+ ],
+ "diagnostics": [
+  {
+   "id": "diag:1",
+   "severity": "warning",
+   "code": "ASSOCIATION_AMBIGUOUS",
+   "message": "Two R 3 labels and two R3 leaders admit two assignments with a margin of 0.04.",
+   "source_ids": [
+    "ann:1",
+    "ann:2",
+    "chain:1",
+    "chain:2"
+   ],
+   "rule_id": "assoc.doubt_margin"
+  },
+  {
+   "id": "diag:2",
+   "severity": "warning",
+   "code": "ROUTE_AMBIGUOUS",
+   "message": "Leader chain:3 has two routes through junction node:6.",
+   "source_ids": [
+    "chain:3"
+   ],
+   "rule_id": "leader.junction"
+  }
+ ]
+}

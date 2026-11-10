@@ -1,0 +1,810 @@
+{
+ "schema_version": "0.1.0-draft",
+ "document_id": "synthetic/example-unsupported",
+ "source": {
+  "file_name": "synthetic-unsupported.pdf",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "page_count": 1,
+  "producer": "unknown exporter",
+  "creator": null,
+  "profile": {
+   "id": "generic",
+   "version": "0.1",
+   "selected_by": [
+    {
+     "rule_id": "profile.producer_match",
+     "kind": "profile_match",
+     "value": "unknown exporter"
+    }
+   ]
+  },
+  "parser": {
+   "name": "drawing2pmi",
+   "version": "0.1.0-draft"
+  }
+ },
+ "sheets": [
+  {
+   "id": "sheet:1",
+   "page_index": 0,
+   "size": {
+    "width": 420.0,
+    "height": 297.0
+   },
+   "pdf_to_sheet": {
+    "from": "pdf_user_space_pt",
+    "to": "sheet:1",
+    "matrix": [
+     0.352778,
+     0,
+     0,
+     -0.352778,
+     0,
+     297.0
+    ],
+    "invertible": true
+   },
+   "title_block": null,
+   "projection_method": {
+    "value": "unknown",
+    "source_ids": []
+   },
+   "scale": null
+  }
+ ],
+ "views": [
+  {
+   "id": "view:1",
+   "sheet_id": "sheet:1",
+   "kind": "unknown",
+   "label": null,
+   "region": [
+    [
+     20,
+     20
+    ],
+    [
+     300,
+     20
+    ],
+    [
+     300,
+     200
+    ],
+    [
+     20,
+     200
+    ]
+   ],
+   "scale": {
+    "printed": null,
+    "fitted": null,
+    "source": "unknown"
+   },
+   "frame": null,
+   "relations": []
+  }
+ ],
+ "primitives": [
+  {
+   "id": "prim:1",
+   "type": "path",
+   "sheet_id": "sheet:1",
+   "pdf_path_index": 77,
+   "segments": [
+    {
+     "kind": "bezier",
+     "points": [
+      [
+       200,
+       120
+      ],
+      [
+       201,
+       118
+      ],
+      [
+       203,
+       118
+      ],
+      [
+       204,
+       120
+      ]
+     ]
+    }
+   ],
+   "stroke": null,
+   "fill": {
+    "color": [
+     0,
+     0,
+     0
+    ]
+   },
+   "closed": true
+  },
+  {
+   "id": "prim:2",
+   "type": "image",
+   "sheet_id": "sheet:1",
+   "bbox": [
+    [
+     250,
+     150
+    ],
+    [
+     300,
+     150
+    ],
+    [
+     300,
+     190
+    ],
+    [
+     250,
+     190
+    ]
+   ]
+  }
+ ],
+ "strokes": [],
+ "text_runs": [
+  {
+   "id": "text:1",
+   "sheet_id": "sheet:1",
+   "text": "",
+   "font": {
+    "name": "UnknownCADSymbols",
+    "size_mm": 3.528,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    100.0,
+    54.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     100.0,
+     50.0
+    ],
+    [
+     104.0,
+     50.0
+    ],
+    [
+     104.0,
+     54.0
+    ],
+    [
+     100.0,
+     54.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "",
+     "decoded": null,
+     "decode_rule": "profile:generic:no_map"
+    }
+   ]
+  },
+  {
+   "id": "text:2",
+   "sheet_id": "sheet:1",
+   "text": "0.05",
+   "font": {
+    "name": "Arial",
+    "size_mm": 3.528,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    106.0,
+    54.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     106.0,
+     50.0
+    ],
+    [
+     114.0,
+     50.0
+    ],
+    [
+     114.0,
+     54.0
+    ],
+    [
+     106.0,
+     54.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": ".",
+     "decoded": ".",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "0",
+     "decoded": "0",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "5",
+     "decoded": "5",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:3",
+   "sheet_id": "sheet:1",
+   "text": "B",
+   "font": {
+    "name": "Arial",
+    "size_mm": 3.528,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    117.0,
+    54.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     117.0,
+     50.0
+    ],
+    [
+     119.0,
+     50.0
+    ],
+    [
+     119.0,
+     54.0
+    ],
+    [
+     117.0,
+     54.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "B",
+     "decoded": "B",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:4",
+   "sheet_id": "sheet:1",
+   "text": "12",
+   "font": {
+    "name": "Arial",
+    "size_mm": 3.528,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    150.0,
+    84.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     150.0,
+     80.0
+    ],
+    [
+     154.0,
+     80.0
+    ],
+    [
+     154.0,
+     84.0
+    ],
+    [
+     150.0,
+     84.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "1",
+     "decoded": "1",
+     "decode_rule": "unicode"
+    },
+    {
+     "raw": "2",
+     "decoded": "2",
+     "decode_rule": "unicode"
+    }
+   ]
+  },
+  {
+   "id": "text:5",
+   "sheet_id": "sheet:1",
+   "text": "Ⓔ",
+   "font": {
+    "name": "Arial",
+    "size_mm": 3.528,
+    "embedded": true,
+    "has_unicode_map": true
+   },
+   "origin": [
+    155.0,
+    84.0
+   ],
+   "direction": [
+    1,
+    0
+   ],
+   "bbox": [
+    [
+     155.0,
+     80.0
+    ],
+    [
+     158.0,
+     80.0
+    ],
+    [
+     158.0,
+     84.0
+    ],
+    [
+     155.0,
+     84.0
+    ]
+   ],
+   "glyphs": [
+    {
+     "raw": "Ⓔ",
+     "decoded": "Ⓔ",
+     "decode_rule": "unicode"
+    }
+   ]
+  }
+ ],
+ "tokens": [
+  {
+   "id": "tok:1",
+   "kind": "unknown",
+   "literal": "",
+   "decoded": null,
+   "text_run_ids": [
+    "text:1"
+   ]
+  },
+  {
+   "id": "tok:2",
+   "kind": "number",
+   "literal": "0.05",
+   "decoded": "0.05",
+   "text_run_ids": [
+    "text:2"
+   ]
+  },
+  {
+   "id": "tok:3",
+   "kind": "letter",
+   "literal": "B",
+   "decoded": "B",
+   "text_run_ids": [
+    "text:3"
+   ]
+  },
+  {
+   "id": "tok:4",
+   "kind": "number",
+   "literal": "12",
+   "decoded": "12",
+   "text_run_ids": [
+    "text:4"
+   ]
+  },
+  {
+   "id": "tok:5",
+   "kind": "modifier",
+   "literal": "Ⓔ",
+   "decoded": "Ⓔ",
+   "text_run_ids": [
+    "text:5"
+   ]
+  }
+ ],
+ "symbols": [
+  {
+   "id": "sym:1",
+   "type": "frame_box",
+   "source_ids": [],
+   "polygon": [
+    [
+     98,
+     49
+    ],
+    [
+     121,
+     49
+    ],
+    [
+     121,
+     55
+    ],
+    [
+     98,
+     55
+    ]
+   ],
+   "score": 1.0
+  },
+  {
+   "id": "sym:2",
+   "type": "unknown",
+   "source_ids": [
+    "prim:1"
+   ],
+   "polygon": [
+    [
+     198,
+     115
+    ],
+    [
+     230,
+     115
+    ],
+    [
+     230,
+     122
+    ],
+    [
+     198,
+     122
+    ]
+   ],
+   "score": 0.7,
+   "evidence": [
+    {
+     "rule_id": "outline_text.cluster",
+     "kind": "closed_filled_paths",
+     "value": 23
+    }
+   ]
+  }
+ ],
+ "chains": [],
+ "annotations": [
+  {
+   "id": "ann:1",
+   "type": "GeometricalTolerance",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:1",
+     "score": 0.8
+    }
+   ],
+   "printed": {
+    "literal": " 0.05 B",
+    "token_ids": [
+     "tok:1",
+     "tok:2",
+     "tok:3"
+    ],
+    "text_run_ids": [
+     "text:1",
+     "text:2",
+     "text:3"
+    ],
+    "symbol_ids": [
+     "sym:1"
+    ]
+   },
+   "syntax": {
+    "status": "partial",
+    "grammar": "iso1101:frame",
+    "errors": [
+     "characteristic glyph U+E014 in font 'UnknownCADSymbols' is not mapped"
+    ]
+   },
+   "region": [
+    [
+     98,
+     49
+    ],
+    [
+     121,
+     49
+    ],
+    [
+     121,
+     55
+    ],
+    [
+     98,
+     55
+    ]
+   ],
+   "frame": {
+    "rows": [
+     {
+      "index": 0,
+      "characteristic": {
+       "value": "unknown",
+       "literal": "",
+       "token_ids": [
+        "tok:1"
+       ]
+      },
+      "compartments": [
+       {
+        "index": 0,
+        "kind": "characteristic",
+        "token_ids": [
+         "tok:1"
+        ]
+       },
+       {
+        "index": 1,
+        "kind": "tolerance",
+        "token_ids": [
+         "tok:2"
+        ]
+       },
+       {
+        "index": 2,
+        "kind": "datum",
+        "token_ids": [
+         "tok:3"
+        ]
+       }
+      ],
+      "zone": {
+       "shape": "none",
+       "value": {
+        "value": 0.05,
+        "unit": "mm",
+        "literal": "0.05",
+        "decimal_separator": ".",
+        "decimals": 2
+       },
+       "modifiers": []
+      },
+      "datum_references": [
+       {
+        "order": 1,
+        "compartment_index": 2,
+        "relation": "single",
+        "elements": [
+         {
+          "letter": "B",
+          "modifiers": []
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "composite": false,
+    "box_symbol_ids": [
+     "sym:1"
+    ]
+   },
+   "adjacent_indications": [],
+   "diagnostic_ids": [
+    "diag:1",
+    "diag:4"
+   ]
+  },
+  {
+   "id": "ann:2",
+   "type": "SizeDimension",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:1",
+     "score": 0.9
+    }
+   ],
+   "printed": {
+    "literal": "12 Ⓔ",
+    "token_ids": [
+     "tok:4",
+     "tok:5"
+    ],
+    "text_run_ids": [
+     "text:4",
+     "text:5"
+    ],
+    "symbol_ids": []
+   },
+   "syntax": {
+    "status": "valid",
+    "grammar": "iso129-1:linear+iso14405-1:modifier",
+    "errors": []
+   },
+   "region": [
+    [
+     150,
+     80
+    ],
+    [
+     158,
+     80
+    ],
+    [
+     158,
+     84
+    ],
+    [
+     150,
+     84
+    ]
+   ],
+   "nominal": {
+    "value": 12.0,
+    "unit": "mm",
+    "literal": "12",
+    "decimal_separator": null,
+    "decimals": null
+   },
+   "tolerance": {
+    "printed": {
+     "form": "none",
+     "upper": null,
+     "lower": null,
+     "fit": null,
+     "token_ids": []
+    },
+    "derived": [],
+    "effective": "none"
+   },
+   "status": "toleranced",
+   "count": null,
+   "modifiers": [
+    {
+     "literal": "Ⓔ",
+     "token_ids": [
+      "tok:5"
+     ],
+     "known": true
+    }
+   ],
+   "size_symbol": "none",
+   "size_basis": [
+    "iso14405-1:size_modifier"
+   ],
+   "diagnostic_ids": [
+    "diag:2"
+   ]
+  },
+  {
+   "id": "ann:3",
+   "type": "UnknownAnnotation",
+   "sheet_id": "sheet:1",
+   "view_candidates": [
+    {
+     "view_id": "view:1",
+     "score": 0.5
+    }
+   ],
+   "printed": {
+    "literal": "",
+    "token_ids": [],
+    "text_run_ids": [],
+    "symbol_ids": [
+     "sym:2"
+    ]
+   },
+   "syntax": {
+    "status": "unparsed",
+    "grammar": null,
+    "errors": [
+     "region looks like text drawn as outlines"
+    ]
+   },
+   "region": [
+    [
+     198,
+     115
+    ],
+    [
+     230,
+     115
+    ],
+    [
+     230,
+     122
+    ],
+    [
+     198,
+     122
+    ]
+   ],
+   "reason": "text as outlines is outside the vector-text promise (modality matrix)",
+   "diagnostic_ids": [
+    "diag:3"
+   ]
+  }
+ ],
+ "associations": [],
+ "association_groups": [],
+ "attachment_facts": [],
+ "diagnostics": [
+  {
+   "id": "diag:1",
+   "severity": "warning",
+   "code": "GLYPH_NOT_MAPPED",
+   "message": "Glyph U+E014 in font 'UnknownCADSymbols' has no mapping in profile 'generic'.",
+   "source_ids": [
+    "text:1"
+   ],
+   "rule_id": "text.decode"
+  },
+  {
+   "id": "diag:2",
+   "severity": "info",
+   "code": "SIZE_MODIFIER_NOT_INTERPRETED",
+   "message": "Ⓔ (envelope requirement) recognised and kept; its semantics are not interpreted by the parser.",
+   "source_ids": [
+    "text:5"
+   ],
+   "rule_id": "iso14405-1.modifier"
+  },
+  {
+   "id": "diag:3",
+   "severity": "warning",
+   "code": "TEXT_AS_OUTLINES",
+   "message": "23 closed filled paths form a text-like cluster with no text spans; not read.",
+   "source_ids": [
+    "prim:1"
+   ],
+   "rule_id": "outline_text.cluster"
+  },
+  {
+   "id": "diag:4",
+   "severity": "error",
+   "code": "DATUM_NOT_INDICATED",
+   "message": "Datum B is referenced by a frame but no datum feature B is indicated on the sheet.",
+   "source_ids": [
+    "tok:3"
+   ],
+   "rule_id": "iso5459.letter_match"
+  },
+  {
+   "id": "diag:5",
+   "severity": "warning",
+   "code": "RASTER_NOT_INTERPRETED",
+   "message": "Raster image on the sheet; raster content is outside the vector parser.",
+   "source_ids": [
+    "prim:2"
+   ],
+   "rule_id": "ingest.image"
+  }
+ ]
+}
